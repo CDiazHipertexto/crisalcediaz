@@ -1,0 +1,38 @@
+export default defineNuxtConfig({
+  compatibilityDate: '2026-09-01',
+  devtools: { enabled: false },
+  modules: ['@nuxt/eslint', '@nuxtjs/sitemap'],
+  css: ['~/assets/css/main.css'],
+  app: {
+    head: {
+      htmlAttrs: { lang: 'es' },
+      meta: [
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { name: 'theme-color', content: '#080a0f' },
+        { name: 'color-scheme', content: 'dark light' },
+      ],
+      link: [
+        { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' },
+        { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+        { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: 'anonymous' },
+        {
+          rel: 'stylesheet',
+          href: 'https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap',
+        },
+      ],
+    },
+  },
+  site: {
+    url: process.env.NUXT_PUBLIC_SITE_URL || 'https://crisalcediaz.co',
+    name: 'Cristian Rubén Salcedo Díaz',
+  },
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+      routes: ['/', '/en', '/privacy', '/accessibility', '/sitemap-html'],
+    },
+  },
+  typescript: {
+    typeCheck: true,
+  },
+})
