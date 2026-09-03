@@ -21,12 +21,13 @@ El PDF más reciente presenta una composición ambigua en la línea de fechas de
 
 ## Material de portafolio
 
-- Google Drive: inventario inicial de web, UX, animación, ePub, piezas gráficas y email marketing.
+- Directorio local `documentos-archivos-portafilio/`: inventario inicial de web, UX, animación, ePub, piezas gráficas y email marketing.
+- Derivados publicados: tres imágenes WebP optimizadas y sin metadatos para hospitality, plataforma editorial y diseño gráfico.
+- Los archivos fuente, CV y binarios pesados están excluidos de Git; solo se versionan derivados explícitamente seleccionados.
 - Archivos Adobe XD: requieren exportación a PDF/PNG o enlace de prototipo para interpretar flujos con fidelidad.
 - Capturas de sitios de referencia: se usan solo como análisis visual; no son activos reutilizables.
 
 ## Pendiente
 
-- Confirmar el directorio mencionado como `documentos-archivos-portafilio`; no apareció con ese nombre exacto.
 - Validar autoría y alcance individual de cada sitio antes de redactar casos finales.
 - Preparar una versión pública del CV sin datos personales innecesarios.

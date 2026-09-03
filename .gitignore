@@ -15,3 +15,6 @@ dist
 coverage/
 playwright-report/
 test-results/
+
+# Raw portfolio sources may contain large binaries or personal data.
+documentos-archivos-portafilio/

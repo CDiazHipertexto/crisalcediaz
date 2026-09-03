@@ -12,6 +12,7 @@
 - Perfil estructurado en Frontend, UX/UI–Product Design y Diseño Gráfico.
 - Stack profesional contextualizado, trayectoria y educación bilingües.
 - Filtros accesibles de proyectos y canales profesionales de contacto.
+- Imágenes WebP optimizadas y sin metadatos desde el material local autorizado.
 
 ### Changed
 

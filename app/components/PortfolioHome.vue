@@ -209,6 +209,19 @@ useSeoMeta({
           <article v-for="project in filteredProjects" :key="project.number" class="project-card">
             <div class="project-card__number">{{ project.number }}</div>
             <div class="project-card__content">
+              <figure
+                v-if="project.image"
+                :class="['project-card__visual', { 'project-card__visual--wide': (project.imageWidth ?? 1) / (project.imageHeight ?? 1) > 3 }]"
+              >
+                <img
+                  :src="project.image"
+                  :alt="project.imageAlt"
+                  :width="project.imageWidth"
+                  :height="project.imageHeight"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </figure>
               <p class="project-card__type">{{ project.type }}</p>
               <h3>{{ project.title }}</h3>
               <p>{{ project.description }}</p>

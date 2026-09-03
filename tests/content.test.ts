@@ -18,4 +18,14 @@ describe('portfolio content', () => {
       expect(new Set(locale.projects.map(project => project.category))).toEqual(new Set(['frontend', 'uxui', 'graphic']))
     }
   })
+
+  it('provides alternative text and dimensions for every project image', () => {
+    for (const locale of ['es', 'en'] as const) {
+      for (const project of portfolioContent[locale].projects.filter(item => item.image)) {
+        expect(project.imageAlt).toBeTruthy()
+        expect(project.imageWidth).toBeGreaterThan(0)
+        expect(project.imageHeight).toBeGreaterThan(0)
+      }
+    }
+  })
 })

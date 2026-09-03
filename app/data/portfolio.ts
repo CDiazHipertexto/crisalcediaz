@@ -35,6 +35,10 @@ export interface PortfolioContent {
     status: string
     category: 'frontend' | 'uxui' | 'graphic'
     href?: string
+    image?: string
+    imageAlt?: string
+    imageWidth?: number
+    imageHeight?: number
   }>
   system: { eyebrow: string; title: string; description: string; metrics: Array<{ value: string; label: string }> }
   framework: { eyebrow: string; title: string; description: string; items: Array<{ name: string; role: string; detail: string }> }
@@ -158,7 +162,11 @@ export const portfolioContent: Record<Locale, PortfolioContent> = {
         tags: ['UX/UI', 'Frontend', 'Responsive'],
         status: 'Autoría y alcance detallado pendientes de validación',
         category: 'frontend',
-        href: 'https://www.hotelfrayenashville.com/',
+        href: 'https://www.stockbridgeinn.com/',
+        image: '/images/work/hospitality-ux.webp',
+        imageAlt: 'Diseño de página principal para The Inn at Stockbridge con módulos editoriales y fotografía de hospitalidad.',
+        imageWidth: 1200,
+        imageHeight: 4024,
       },
       {
         number: '03',
@@ -177,6 +185,10 @@ export const portfolioContent: Record<Locale, PortfolioContent> = {
         tags: ['ePub', 'Editorial', 'HTML Email'],
         status: 'Selección visual en preparación',
         category: 'graphic',
+        image: '/images/work/editorial-platform.webp',
+        imageAlt: 'Interfaz de PasaLaPágina con colecciones editoriales organizadas por categorías.',
+        imageWidth: 1200,
+        imageHeight: 1638,
       },
       {
         number: '05',
@@ -195,6 +207,10 @@ export const portfolioContent: Record<Locale, PortfolioContent> = {
         tags: ['Editorial', 'Prepress', 'Visual Design'],
         status: 'Muestras en proceso de selección',
         category: 'graphic',
+        image: '/images/work/editorial-banner.webp',
+        imageAlt: 'Banner editorial del catálogo Paz, conflictos y reconciliación.',
+        imageWidth: 1200,
+        imageHeight: 275,
       },
     ],
     system: {
@@ -343,7 +359,11 @@ export const portfolioContent: Record<Locale, PortfolioContent> = {
         tags: ['UX/UI', 'Frontend', 'Responsive'],
         status: 'Detailed authorship and scope pending validation',
         category: 'frontend',
-        href: 'https://www.hotelfrayenashville.com/',
+        href: 'https://www.stockbridgeinn.com/',
+        image: '/images/work/hospitality-ux.webp',
+        imageAlt: 'Homepage design for The Inn at Stockbridge featuring editorial modules and hospitality photography.',
+        imageWidth: 1200,
+        imageHeight: 4024,
       },
       {
         number: '03',
@@ -362,6 +382,10 @@ export const portfolioContent: Record<Locale, PortfolioContent> = {
         tags: ['ePub', 'Editorial', 'HTML Email'],
         status: 'Visual selection in preparation',
         category: 'graphic',
+        image: '/images/work/editorial-platform.webp',
+        imageAlt: 'PasaLaPágina interface with editorial collections grouped by category.',
+        imageWidth: 1200,
+        imageHeight: 1638,
       },
       {
         number: '05',
@@ -380,6 +404,10 @@ export const portfolioContent: Record<Locale, PortfolioContent> = {
         tags: ['Editorial', 'Prepress', 'Graphic Design'],
         status: 'Samples being selected',
         category: 'graphic',
+        image: '/images/work/editorial-banner.webp',
+        imageAlt: 'Editorial banner for the Peace, conflict and reconciliation catalog.',
+        imageWidth: 1200,
+        imageHeight: 275,
       },
     ],
     system: {
