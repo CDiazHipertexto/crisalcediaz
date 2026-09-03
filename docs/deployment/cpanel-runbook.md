@@ -1,21 +1,24 @@
-# Runbook cPanel — borrador
+# Runbook cPanel
 
 ## Estado observado — 2026-09-03
 
 - Proveedor visible en las capturas: Colombia Hosting con cPanel.
-- El panel ofrece la interfaz **Domains / Crear un dominio**.
-- La delegación pública de `crisalcediaz.co` responde `SERVFAIL`: los servidores delegados rechazan actualmente la consulta de zona.
-- No existe remoto Git configurado en el repositorio local.
-- El acceso automatizado al puerto seguro de cPanel no está disponible en este entorno; la creación del dominio y la carga deberán realizarse con acompañamiento del propietario desde su sesión, sin compartir credenciales.
+- cPanel 136.0.38 ofrece Domains, Zone Editor, File Manager y administración SSL/TLS.
+- `crisalcediaz.co` fue creado como dominio adicional con document root exclusivo en `public_html/crisalcediaz.co`.
+- **Share document root** quedó desactivado; el dominio principal conserva su propia raíz y no fue modificado.
+- La zona de `crisalcediaz.co` existe en cPanel con A para `@` hacia el origen del hosting y CNAME de `www` hacia el dominio raíz. La IP se mantiene fuera del repositorio público.
+- Los cuatro nameservers configurados son `ns1` a `ns4.colombiahosting.com`.
+- La consulta pública aún responde `SERVFAIL` y la consulta directa a `ns1` responde `REFUSED`; se debe validar la sincronización de la zona con el proveedor antes de emitir SSL.
+- El remoto Git quedó publicado en `https://github.com/CDiazHipertexto/crisalcediaz` y la rama remota inicial es `feature/portfolio-prototype`.
 
 ## Requisitos por confirmar
 
-- Document root exclusivo para `crisalcediaz.co`.
-- SSL automático activo.
-- File Manager o SFTP.
+- Sincronización autoritativa de la nueva zona DNS.
+- SSL automático para `crisalcediaz.co` y `www.crisalcediaz.co`.
+- El ZIP validado fue cargado en la raíz exclusiva; falta extraerlo y retirar el ZIP después de comprobar el sitio.
 - Redirect de `www` definido.
 - Compresión y headers configurables.
-- Respaldo de DNS; confirmar MX, SPF, DKIM y DMARC.
+- Verificación final de MX, SPF, DKIM y DMARC antes de habilitar correo en el nuevo dominio.
 
 ## Desbloqueo del dominio
 
@@ -51,6 +54,13 @@ La CSP permite estilos y scripts inline porque el HTML estático generado por Nu
 3. Subir el artefacto a un directorio versionado.
 4. Validar 200, 404, assets, sitemap, robots y HTTPS.
 5. Cambiar el document root o reemplazar el directorio mediante una operación reversible.
+
+### Ejecución 2026-09-03
+
+- Artefacto: `cris-os-portfolio-2026-09-03.zip` (2,2 MB).
+- Destino confirmado: `public_html/crisalcediaz.co`; el prefijo privado de la cuenta no se documenta en el repositorio.
+- Se preservaron `.well-known`, `cgi-bin`, `.user.ini`, `php.ini` y la configuración inicial creada por cPanel.
+- El ZIP terminó de cargar; la extracción y la validación HTTP/HTTPS siguen pendientes.
 
 No activar **Share document root** con otro dominio.
 
