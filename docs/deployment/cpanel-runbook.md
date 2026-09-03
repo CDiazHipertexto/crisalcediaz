@@ -14,7 +14,7 @@
 ## Requisitos por confirmar
 
 - Emisión automática de SSL para `crisalcediaz.co` y `www.crisalcediaz.co`; cPanel los muestra en cola de renovación mediante AutoSSL.
-- Mover el ZIP fuera de la raíz pública después de comprobar HTTPS, conservándolo como artefacto de rollback.
+- Confirmar que el artefacto de rollback y la configuración original siguen disponibles en la carpeta privada de copias.
 - Validación final del redirect de `www`, compresión y headers sobre HTTPS una vez emitido el certificado.
 - Verificación final de MX, SPF, DKIM y DMARC antes de habilitar correo en el nuevo dominio.
 
@@ -62,6 +62,7 @@ La CSP permite estilos y scripts inline porque el HTML estático generado por Nu
 - La configuración `.htaccess` original de cPanel se preservó como respaldo fechado antes de extraer el artefacto.
 - La validación directa contra el origen confirmó el redirect HTTP a HTTPS y la entrega de los headers de seguridad; la validación HTTPS pública espera la emisión de AutoSSL.
 - La configuración permite `/.well-known/acme-challenge/` por HTTP para no bloquear la validación y renovación de AutoSSL; el resto del tráfico mantiene redirección canónica a HTTPS.
+- El ZIP de despliegue y el `.htaccess` original se movieron a la carpeta privada `copias`; no quedan artefactos de instalación descargables desde el document root.
 
 No activar **Share document root** con otro dominio.
 
