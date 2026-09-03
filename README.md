@@ -11,6 +11,7 @@ Primer prototipo en construcción. El contenido marcado como pendiente no debe p
 - Nuxt 4, Vue 3 y TypeScript.
 - Generación estática para cPanel.
 - CSS propio basado en tokens semánticos.
+- Tipografía del sistema, sin solicitudes a proveedores externos.
 - Vitest para pruebas de lógica y contenido.
 - ESLint y type checking en la cadena de calidad.
 
@@ -47,6 +48,8 @@ Copiar `.env.example` a `.env` solo cuando sea necesario. Nunca guardar secretos
 
 La Home se implementa en Nuxt/Vue. Las futuras demostraciones React y Angular se compilarán como artefactos aislados, sin incorporarlas al bundle principal.
 
+El contenido se organiza en tres ramas profesionales: Frontend Engineering, UX/UI–Product Design y Diseño Gráfico.
+
 ## Contenido y privacidad
 
 No agregar nombres internos, datos personales, métricas no verificadas ni capturas con información sensible. Consultar `docs/content/confidentiality.md`.
@@ -54,4 +57,3 @@ No agregar nombres internos, datos personales, métricas no verificadas ni captu
 ## Despliegue
 
 No publicar manualmente el código fuente. Generar el sitio y transferir únicamente `.output/public` al document root aislado definido en el runbook.
-

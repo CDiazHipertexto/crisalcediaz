@@ -5,6 +5,11 @@ const props = defineProps<{ content: PortfolioContent }>()
 
 const assistant = ref<{ open: () => void } | null>(null)
 const menuOpen = ref(false)
+const activeProjectCategory = ref<'all' | 'frontend' | 'uxui' | 'graphic'>('all')
+
+const filteredProjects = computed(() => activeProjectCategory.value === 'all'
+  ? props.content.projects
+  : props.content.projects.filter(project => project.category === activeProjectCategory.value))
 
 const canonical = computed(() => props.content.locale === 'es'
   ? 'https://crisalcediaz.co/'
@@ -96,14 +101,112 @@ useSeoMeta({
         </article>
       </section>
 
+      <section id="about" class="profile-section section-block" aria-labelledby="profile-title">
+        <div class="section-heading">
+          <p class="eyebrow">{{ content.branches.eyebrow }}</p>
+          <h2 id="profile-title">{{ content.branches.title }}</h2>
+          <div>
+            <p>{{ content.branches.description }}</p>
+            <p v-for="paragraph in content.about.paragraphs" :key="paragraph" class="profile-section__bio">{{ paragraph }}</p>
+          </div>
+        </div>
+        <div class="branch-grid">
+          <article v-for="(branch, index) in content.branches.items" :key="branch.id" :data-branch="branch.id">
+            <div class="branch-grid__index">0{{ index + 1 }} / 03</div>
+            <p class="branch-grid__role">{{ branch.role }}</p>
+            <h3>{{ branch.title }}</h3>
+            <p>{{ branch.description }}</p>
+            <ul class="tag-list" :aria-label="branch.title">
+              <li v-for="capability in branch.capabilities" :key="capability">{{ capability }}</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="stack" class="stack-section section-block section-grid" aria-labelledby="stack-title">
+        <div class="section-heading section-heading--compact">
+          <p class="eyebrow">{{ content.stack.eyebrow }}</p>
+          <h2 id="stack-title">{{ content.stack.title }}</h2>
+          <p>{{ content.stack.description }}</p>
+        </div>
+        <div class="stack-terminal" aria-label="Professional stack">
+          <div class="stack-terminal__bar"><span /><span /><span /><code>cris@portfolio: ~/stack</code></div>
+          <div class="stack-terminal__body">
+            <section v-for="group in content.stack.groups" :key="group.category">
+              <h3>{{ group.label }}</h3>
+              <ul>
+                <li v-for="item in group.items" :key="item"><span aria-hidden="true">├─</span>{{ item }}</li>
+              </ul>
+            </section>
+          </div>
+          <div class="stack-terminal__status">{{ content.stack.groups.reduce((total, group) => total + group.items.length, 0) }} capabilities · 4 contexts</div>
+        </div>
+      </section>
+
+      <section id="experience" class="experience-section section-block" aria-labelledby="experience-title">
+        <div class="section-heading">
+          <p class="eyebrow">{{ content.experience.eyebrow }}</p>
+          <h2 id="experience-title">{{ content.experience.title }}</h2>
+          <p>{{ content.experience.description }}</p>
+        </div>
+        <ol class="timeline">
+          <li v-for="item in content.experience.items" :key="`${item.company}-${item.period}`">
+            <div class="timeline__marker" aria-hidden="true" />
+            <p class="timeline__period">{{ item.period }}</p>
+            <article>
+              <p class="timeline__company">{{ item.company }}</p>
+              <h3>{{ item.role }}</h3>
+              <p>{{ item.description }}</p>
+              <ul class="tag-list" aria-label="Skills">
+                <li v-for="tag in item.tags" :key="tag">{{ tag }}</li>
+              </ul>
+            </article>
+          </li>
+        </ol>
+      </section>
+
+      <section id="education" class="education-section section-block section-grid" aria-labelledby="education-title">
+        <div class="section-heading section-heading--compact">
+          <p class="eyebrow">{{ content.education.eyebrow }}</p>
+          <h2 id="education-title">{{ content.education.title }}</h2>
+          <p>{{ content.education.description }}</p>
+        </div>
+        <div>
+          <ol class="degree-list">
+            <li v-for="degree in content.education.degrees" :key="degree.year">
+              <span>{{ degree.year }}</span>
+              <div><h3>{{ degree.title }}</h3><p>{{ degree.institution }}</p></div>
+            </li>
+          </ol>
+          <div class="learning-list">
+            <h3>{{ content.education.learningLabel }}</h3>
+            <ul class="tag-list">
+              <li v-for="item in content.education.learning" :key="item">{{ item }}</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
       <section id="work" class="section-block" aria-labelledby="work-title">
         <div class="section-heading">
           <p class="eyebrow">{{ content.labels.work }}</p>
           <h2 id="work-title">{{ content.labels.workTitle }}</h2>
           <p>{{ content.labels.workIntro }}</p>
         </div>
-        <div class="project-list">
-          <article v-for="project in content.projects" :key="project.number" class="project-card">
+        <div class="project-tabs" role="group" :aria-label="content.labels.work">
+          <button
+            v-for="category in (['all', 'frontend', 'uxui', 'graphic'] as const)"
+            :key="category"
+            type="button"
+            :aria-pressed="activeProjectCategory === category"
+            @click="activeProjectCategory = category"
+          >
+            {{ content.labels.projectTabs[category] }}
+            <span>{{ category === 'all' ? content.projects.length : content.projects.filter(project => project.category === category).length }}</span>
+          </button>
+        </div>
+        <div class="project-list" aria-live="polite">
+          <article v-for="project in filteredProjects" :key="project.number" class="project-card">
             <div class="project-card__number">{{ project.number }}</div>
             <div class="project-card__content">
               <p class="project-card__type">{{ project.type }}</p>
@@ -171,19 +274,21 @@ useSeoMeta({
         </div>
       </section>
 
-      <section id="about" class="about-section section-block section-grid" aria-labelledby="about-title">
-        <p class="eyebrow">{{ content.about.eyebrow }}</p>
-        <div>
-          <h2 id="about-title">{{ content.about.title }}</h2>
-          <p v-for="paragraph in content.about.paragraphs" :key="paragraph">{{ paragraph }}</p>
-        </div>
-      </section>
-
       <section id="contact" class="contact-section" aria-labelledby="contact-title">
-        <p class="eyebrow">{{ content.contact.eyebrow }}</p>
-        <h2 id="contact-title">{{ content.contact.title }}</h2>
-        <p>{{ content.contact.description }}</p>
-        <span class="button button--disabled" aria-disabled="true">{{ content.contact.cta }}</span>
+        <div class="contact-section__content">
+          <p class="eyebrow">{{ content.contact.eyebrow }}</p>
+          <h2 id="contact-title">{{ content.contact.title }}</h2>
+          <p>{{ content.contact.description }}</p>
+          <div class="contact-section__actions">
+            <button class="button button--primary" type="button" @click="assistant?.open()">{{ content.contact.assistantCta }}</button>
+            <a class="button button--secondary" href="mailto:cristianduografico@gmail.com">{{ content.contact.cta }}</a>
+          </div>
+        </div>
+        <nav class="contact-links" aria-label="Professional profiles">
+          <a v-for="link in content.contact.links" :key="link.label" :href="link.href" target="_blank" rel="noopener noreferrer">
+            <span><strong>{{ link.label }}</strong><small>{{ link.detail }}</small></span><span aria-hidden="true">↗</span>
+          </a>
+        </nav>
       </section>
     </main>
 

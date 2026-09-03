@@ -9,6 +9,8 @@ Objetivo: WCAG 2.2 AA.
 - Navegación operable con teclado.
 - Botones con nombres accesibles.
 - Diálogo nativo para Ask Cris.
+- Filtros de proyecto expuestos como grupo de botones con `aria-pressed`.
+- Jerarquía tipográfica fluida reducida después de revisión visual.
 - Temas claro/oscuro y `prefers-reduced-motion`.
 - Contenido principal disponible en HTML prerenderizado.
 
@@ -19,4 +21,3 @@ Objetivo: WCAG 2.2 AA.
 - Safari, Firefox y dispositivos reales.
 - Reflow a 320 px y zoom 400%.
 - Formularios, tablas, tooltips y modales del producto final.
-
