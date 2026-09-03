@@ -4,6 +4,8 @@ useSeoMeta({ title: 'Mapa del sitio | Cristian Salcedo' })
 const links = [
   { to: '/', label: 'Inicio — Español' },
   { to: '/en', label: 'Home — English' },
+  { to: '/archive', label: 'Archivo visual y web — Español' },
+  { to: '/en/archive', label: 'Visual and web archive — English' },
   { to: '/privacy', label: 'Privacidad' },
   { to: '/accessibility', label: 'Accesibilidad' },
 ]
@@ -16,4 +18,3 @@ const links = [
     </ul>
   </LegalPage>
 </template>
-

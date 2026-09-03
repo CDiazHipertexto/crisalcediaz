@@ -23,7 +23,7 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       crawlLinks: true,
-      routes: ['/', '/en', '/privacy', '/accessibility', '/sitemap-html'],
+      routes: ['/', '/en', '/archive', '/en/archive', '/privacy', '/accessibility', '/sitemap-html'],
     },
   },
   typescript: {

@@ -4,7 +4,6 @@ import type { PortfolioContent } from '~/data/portfolio'
 const props = defineProps<{ content: PortfolioContent }>()
 
 const assistant = ref<{ open: () => void } | null>(null)
-const menuOpen = ref(false)
 const activeProjectCategory = ref<'all' | 'frontend' | 'uxui' | 'graphic'>('all')
 
 const filteredProjects = computed(() => activeProjectCategory.value === 'all'
@@ -31,8 +30,15 @@ useHead({
         '@type': 'Person',
         name: 'Cristian Rubén Salcedo Díaz',
         url: 'https://crisalcediaz.co',
+        image: 'https://crisalcediaz.co/images/profile/cristian-salcedo.webp',
         jobTitle: 'Design Engineer',
         knowsAbout: ['Product Design', 'Design Systems', 'UX/UI', 'Frontend Development', 'AI-assisted workflows'],
+        sameAs: [
+          'https://www.linkedin.com/in/crisalcediaz/',
+          'https://github.com/CDiazHipertexto',
+          'https://www.behance.net/crisalcediaaz',
+          'https://www.youtube.com/@cristianrsalcedodiaz229',
+        ],
       }),
     },
   ],
@@ -55,28 +61,13 @@ useSeoMeta({
   <div class="site-shell">
     <a class="skip-link" href="#main">{{ content.locale === 'es' ? 'Saltar al contenido' : 'Skip to content' }}</a>
 
-    <header class="site-header">
-      <NuxtLink :to="content.locale === 'es' ? '/' : '/en'" class="site-header__brand"><BrandMark /></NuxtLink>
-      <button
-        class="menu-button"
-        type="button"
-        :aria-expanded="menuOpen"
-        aria-controls="primary-navigation"
-        :aria-label="content.labels.menu"
-        @click="menuOpen = !menuOpen"
-      >
-        <span /><span />
-      </button>
-      <nav id="primary-navigation" :class="['site-nav', { 'site-nav--open': menuOpen }]" aria-label="Primary">
-        <a v-for="item in content.nav" :key="item.href" :href="item.href" @click="menuOpen = false">{{ item.label }}</a>
-      </nav>
-      <div class="site-header__actions">
-        <ThemeToggle :label="content.labels.theme" />
-        <NuxtLink class="language-link" :to="content.alternatePath" :lang="content.locale === 'es' ? 'en' : 'es'">
-          {{ content.languageLabel }}
-        </NuxtLink>
-      </div>
-    </header>
+    <SiteHeader
+      :locale="content.locale"
+      :language-label="content.languageLabel"
+      :alternate-path="content.alternatePath"
+      :home-path="content.locale === 'es' ? '/' : '/en'"
+      :nav="content.nav"
+    />
 
     <main id="main">
       <section class="hero section-grid" aria-labelledby="hero-title">
@@ -93,7 +84,7 @@ useSeoMeta({
         <NetworkVisual class="hero__visual" />
       </section>
 
-      <section class="principles" aria-label="Working principles">
+      <section class="principles" :aria-label="content.locale === 'es' ? 'Principios de trabajo' : 'Working principles'">
         <article v-for="principle in content.principles" :key="principle.index">
           <span>{{ principle.index }}</span>
           <h2>{{ principle.title }}</h2>
@@ -129,7 +120,7 @@ useSeoMeta({
           <h2 id="stack-title">{{ content.stack.title }}</h2>
           <p>{{ content.stack.description }}</p>
         </div>
-        <div class="stack-terminal" aria-label="Professional stack">
+        <div class="stack-terminal" :aria-label="content.locale === 'es' ? 'Stack profesional' : 'Professional stack'">
           <div class="stack-terminal__bar"><span /><span /><span /><code>cris@portfolio: ~/stack</code></div>
           <div class="stack-terminal__body">
             <section v-for="group in content.stack.groups" :key="group.category">
@@ -157,7 +148,7 @@ useSeoMeta({
               <p class="timeline__company">{{ item.company }}</p>
               <h3>{{ item.role }}</h3>
               <p>{{ item.description }}</p>
-              <ul class="tag-list" aria-label="Skills">
+              <ul class="tag-list" :aria-label="content.locale === 'es' ? 'Habilidades' : 'Skills'">
                 <li v-for="tag in item.tags" :key="tag">{{ tag }}</li>
               </ul>
             </article>
@@ -225,7 +216,7 @@ useSeoMeta({
               <p class="project-card__type">{{ project.type }}</p>
               <h3>{{ project.title }}</h3>
               <p>{{ project.description }}</p>
-              <ul class="tag-list" aria-label="Technologies">
+              <ul class="tag-list" :aria-label="content.locale === 'es' ? 'Tecnologías' : 'Technologies'">
                 <li v-for="tag in project.tags" :key="tag">{{ tag }}</li>
               </ul>
             </div>
@@ -237,6 +228,10 @@ useSeoMeta({
               <span v-else>{{ content.labels.caseSoon }}</span>
             </div>
           </article>
+        </div>
+        <div class="archive-cta">
+          <p>{{ content.labels.archiveDescription }}</p>
+          <NuxtLink class="button button--secondary" :to="content.locale === 'es' ? '/archive' : '/en/archive'">{{ content.labels.archiveCta }} →</NuxtLink>
         </div>
       </section>
 
@@ -297,7 +292,7 @@ useSeoMeta({
             <a class="button button--secondary" href="mailto:cristianduografico@gmail.com">{{ content.contact.cta }}</a>
           </div>
         </div>
-        <nav class="contact-links" aria-label="Professional profiles">
+        <nav class="contact-links" :aria-label="content.locale === 'es' ? 'Perfiles profesionales' : 'Professional profiles'">
           <a v-for="link in content.contact.links" :key="link.label" :href="link.href" target="_blank" rel="noopener noreferrer">
             <span><strong>{{ link.label }}</strong><small>{{ link.detail }}</small></span><span aria-hidden="true">↗</span>
           </a>
@@ -308,7 +303,7 @@ useSeoMeta({
     <footer class="site-footer">
       <BrandMark />
       <p>© {{ new Date().getFullYear() }} Cristian Rubén Salcedo Díaz · {{ content.labels.footer }}</p>
-      <nav aria-label="Legal">
+      <nav :aria-label="content.locale === 'es' ? 'Información legal' : 'Legal information'">
         <NuxtLink to="/privacy">Privacy</NuxtLink>
         <NuxtLink to="/accessibility">Accessibility</NuxtLink>
         <NuxtLink to="/sitemap-html">Sitemap</NuxtLink>

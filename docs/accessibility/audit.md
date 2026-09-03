@@ -13,6 +13,10 @@ Objetivo: WCAG 2.2 AA.
 - Jerarquía tipográfica fluida reducida después de revisión visual.
 - Temas claro/oscuro y `prefers-reduced-motion`.
 - Contenido principal disponible en HTML prerenderizado.
+- Cabecera sticky con identidad textual, fotografía decorativa y menú móvil operable.
+- Mockups verticales desplazables mediante teclado y con nombre accesible.
+- Videos con fachada local: YouTube solo se conecta después de una acción explícita.
+- Imágenes con texto alternativo útil, dimensiones explícitas y carga diferida.
 
 ## Pendiente
 

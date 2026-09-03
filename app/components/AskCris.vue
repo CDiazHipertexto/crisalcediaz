@@ -19,10 +19,10 @@ const copy = computed<AssistantCopy>(() => props.locale === 'es'
       questions: [
         ['¿Cuál es su enfoque profesional?', 'Cristian conecta Product Design, Design Systems, UX/UI, frontend y flujos asistidos por IA. Fuente: Perfil.'],
         ['¿Con qué tecnologías trabaja?', 'Su experiencia declarada incluye HTML, CSS/SCSS, JavaScript, Angular, Vue, WordPress, Magento, Salesforce Lightning y Liferay. Fuente: Perfil profesional.'],
-        ['¿Cuál es su experiencia reciente?', 'Desde octubre de 2023 trabaja como Tech Consultant en Frontend Web, implementando interfaces con Angular, Liferay, HTML, SCSS y JavaScript. Fuente: Experiencia.'],
-        ['¿Cuál es su formación?', 'Es Profesional en Comunicación Visual y Tecnólogo en Comunicación Gráfica por UNIMINUTO, con formación complementaria en desarrollo web. Fuente: Educación.'],
+        ['¿Cuál es su experiencia reciente?', 'Trabajó en Grupo VASS hasta el 24 de julio de 2026 como Tech Consultant en Frontend y UX/UI. También desarrolló una etapa freelance con Hipertexto hasta julio de 2026. Fuente: Experiencia.'],
+        ['¿Cuál es su formación?', 'Cursa una Especialización en Inteligencia Artificial en UNIMINUTO desde agosto de 2026. También es Profesional en Comunicación Visual y Tecnólogo en Comunicación Gráfica. Fuente: Educación.'],
         ['¿Qué hay en AI Lab?', 'AI Lab documentará experimentos de AI Product Design, agentes, RAG, automatización y evaluación responsable. Fuente: AI Lab.'],
-        ['¿Cómo puedo contactarlo?', 'Puedes continuar por LinkedIn o correo desde la sección Contacto. Fuente: Contacto.'],
+        ['¿Cómo puedo contactarlo?', 'Puedes continuar por WhatsApp, LinkedIn o correo desde la sección Contacto. Fuente: Contacto.'],
       ],
     }
   : {
@@ -32,10 +32,10 @@ const copy = computed<AssistantCopy>(() => props.locale === 'es'
       questions: [
         ['What is his professional focus?', 'Cristian connects Product Design, Design Systems, UX/UI, frontend and AI-assisted workflows. Source: About.'],
         ['Which technologies does he use?', 'His stated experience includes HTML, CSS/SCSS, JavaScript, Angular, Vue, WordPress, Magento, Salesforce Lightning and Liferay. Source: Professional profile.'],
-        ['What is his recent experience?', 'Since October 2023 he has worked as a Frontend Web Tech Consultant, implementing interfaces with Angular, Liferay, HTML, SCSS and JavaScript. Source: Experience.'],
-        ['What is his education?', 'He holds degrees in Visual Communication and Graphic Communication from UNIMINUTO, with complementary web development training. Source: Education.'],
+        ['What is his recent experience?', 'He worked at Grupo VASS through July 24, 2026 as a Frontend and UX/UI Tech Consultant. He also completed a freelance engagement with Hipertexto in July 2026. Source: Experience.'],
+        ['What is his education?', 'He has been pursuing an Artificial Intelligence specialization at UNIMINUTO since August 2026. He also holds degrees in Visual and Graphic Communication. Source: Education.'],
         ['What is in the AI Lab?', 'AI Lab will document AI Product Design, agents, RAG, automation and responsible evaluation experiments. Source: AI Lab.'],
-        ['How can I contact him?', 'You can continue through LinkedIn or email from the Contact section. Source: Contact.'],
+        ['How can I contact him?', 'You can continue through WhatsApp, LinkedIn or email from the Contact section. Source: Contact.'],
       ],
     })
 

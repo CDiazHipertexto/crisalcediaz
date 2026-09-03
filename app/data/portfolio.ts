@@ -71,6 +71,8 @@ export interface PortfolioContent {
     workTitle: string
     workIntro: string
     projectTabs: Record<'all' | 'frontend' | 'uxui' | 'graphic', string>
+    archiveCta: string
+    archiveDescription: string
     openSite: string
     caseSoon: string
     menu: string
@@ -98,7 +100,7 @@ export const portfolioContent: Record<Locale, PortfolioContent> = {
       lead: 'Conecto diseño de producto, sistemas visuales, frontend y contexto de negocio para convertir complejidad empresarial en productos claros y escalables.',
       primaryCta: 'Explorar trabajo',
       secondaryCta: 'Pregúntale a Cris',
-      availability: 'Bogotá · Disponible para retos de producto',
+      availability: 'Bogotá · Disponible para nuevos retos',
     },
     principles: [
       { index: '01', title: 'Pienso en sistemas', description: 'Conecto decisiones, reglas y estados antes de dibujar pantallas.' },
@@ -138,10 +140,10 @@ export const portfolioContent: Record<Locale, PortfolioContent> = {
       title: 'Tecnología y diseño aplicados a problemas reales.',
       description: 'No es una colección de logos. Cada herramienta está asociada a una parte verificable de mi práctica profesional.',
       groups: [
-        { category: 'frontend', label: 'Frontend', items: ['HTML5', 'CSS3', 'Sass / SCSS', 'JavaScript', 'TypeScript', 'Angular', 'Vue.js', 'Liferay', 'PHP / Symfony', 'REST APIs', 'Git'] },
+        { category: 'frontend', label: 'Frontend', items: ['HTML5', 'CSS3', 'Sass / SCSS', 'JavaScript', 'TypeScript', 'Angular', 'Vue.js', 'React · formación', 'Liferay', 'PHP / Symfony', 'REST APIs', 'Git'] },
         { category: 'uxui', label: 'UX/UI & Product', items: ['Figma', 'Adobe XD', 'Arquitectura de información', 'User flows', 'Wireframes', 'Prototipos', 'Design Systems', 'UX Writing', 'Accesibilidad', 'Responsive Design'] },
         { category: 'graphic', label: 'Diseño gráfico', items: ['Illustrator', 'Photoshop', 'InDesign', 'After Effects', 'Premiere Pro', 'Acrobat', 'Diseño editorial', 'Arte final', 'ePub', 'Email marketing'] },
-        { category: 'workflow', label: 'Producto y colaboración', items: ['Jira', 'Azure DevOps', 'Salesforce Lightning', 'WordPress', 'Magento', 'VTEX', 'Metodologías ágiles', 'IA aplicada'] },
+        { category: 'workflow', label: 'Producto y colaboración', items: ['Jira', 'Azure DevOps', 'Salesforce Lightning', 'WordPress', 'WooCommerce', 'Magento', 'VTEX', 'SEO técnico', 'QA visual', 'IA aplicada'] },
       ],
     },
     projects: [
@@ -249,36 +251,39 @@ export const portfolioContent: Record<Locale, PortfolioContent> = {
       ],
     },
     experience: {
-      eyebrow: 'EXPERIENCIA · TRAYECTORIA DESDE 2015',
+      eyebrow: 'EXPERIENCIA · TRAYECTORIA 2015—2026',
       title: 'Diseño, implementación y evolución de productos digitales.',
       description: 'Una trayectoria que pasó de producción gráfica y ecosistemas editoriales a interfaces frontend y plataformas empresariales.',
       items: [
-        { period: 'Oct 2023 — Actual', role: 'Tech Consultant · Frontend Web', company: 'Grupo VASS', description: 'Interfaces accesibles y optimizadas con HTML5, SCSS y JavaScript; desarrollo Angular y Liferay, componentes e integración en equipos ágiles.', tags: ['Angular', 'Liferay', 'Accessibility'] },
-        { period: 'Jun 2022 — Oct 2023', role: 'Frontend Web Developer', company: 'Tambourine · Marketing for Hotels', description: 'Maquetación y desarrollo de experiencias web para hospitality con HTML5, SCSS, PHP/Symfony e interactividad JavaScript.', tags: ['HTML', 'SCSS', 'JavaScript'] },
-        { period: 'Mar 2018 — Jun 2022', role: 'Frontend Web Developer', company: 'PasaLaPágina', description: 'Diseño UX/UI, desarrollo de interfaces en Vue.js, optimización responsive y campañas de email marketing.', tags: ['Vue.js', 'UX/UI', 'Email'] },
-        { period: 'Sep 2015 — Feb 2018', role: 'Diseñador web, gráfico y conversión digital', company: 'Hipertexto Ltda.', description: 'Libros electrónicos, interfaces HTML/CSS y gestión de experiencias en VTEX, WordPress y Magento.', tags: ['ePub', 'WordPress', 'Magento'] },
-        { period: 'Ene 2015 — Jul 2015', role: 'Diseñador gráfico · Arte finalista', company: 'Legis S.A.', description: 'Diseño de piezas y preparación de artes finales con revisión de pruebas de color y estándares de impresión.', tags: ['Editorial', 'Prepress', 'Graphic Design'] },
+        { period: 'Oct 2023 — 24 Jul 2026', role: 'Tech Consultant · Frontend · UX/UI', company: 'Grupo VASS', description: 'Convertí requerimientos empresariales en flujos, wireframes, prototipos y componentes; acompañé implementación y QA con Angular, Liferay y Salesforce, aplicando accesibilidad, UX Writing y consistencia de Design System.', tags: ['Angular', 'Liferay', 'Salesforce', 'Figma'] },
+        { period: 'Sep 2020 — 13 Jul 2026', role: 'Freelance Frontend Developer · Web Designer', company: 'Hipertexto Ltda.', description: 'Mantuve ecosistemas editoriales y de comercio electrónico con WordPress, Magento, Laravel y Vue.js; diseñé propuestas en Figma y documenté componentes, despliegues, riesgos e incidencias.', tags: ['Magento', 'Vue.js', 'WordPress', 'Figma'] },
+        { period: 'Jun 2022 — Oct 2023', role: 'Frontend Web Developer', company: 'Tambourine · Marketing for Hotels', description: 'Implementé sitios y landing pages para hospitality desde archivos de diseño y sistemas visuales, cuidando responsive, compatibilidad cross-browser, QA visual y rendimiento con HTML5, SCSS, JavaScript y PHP/Symfony.', tags: ['HTML', 'SCSS', 'JavaScript', 'PHP'] },
+        { period: 'Mar 2018 — Jun 2022', role: 'Frontend Web Developer · UX/UI · Email', company: 'PasaLaPágina', description: 'Diseñé y desarrollé una plataforma de lectura digital con Vue.js; optimicé navegación, componentes y responsive, y conecté campañas de Mailchimp y emBlue con objetivos editoriales y de producto.', tags: ['Vue.js', 'UX/UI', 'Mailchimp', 'emBlue'] },
+        { period: 'Sep 2015 — Feb 2018', role: 'Diseñador web, gráfico y conversión digital', company: 'Hipertexto Ltda.', description: 'Desarrollé experiencias web, piezas digitales y publicaciones ePub2/ePub3 para contextos editoriales y e-commerce usando HTML, CSS, WordPress, Magento y VTEX.', tags: ['ePub', 'WordPress', 'Magento', 'VTEX'] },
+        { period: 'Ene 2015 — Jul 2015', role: 'Diseñador gráfico · Arte finalista', company: 'Legis S.A.', description: 'Preparé piezas editoriales e impresas, artes finales, pruebas de color y controles de calidad bajo especificaciones de producción.', tags: ['Editorial', 'Prepress', 'Graphic Design'] },
       ],
     },
     education: {
       eyebrow: 'EDUCACIÓN · BASE VISUAL Y TÉCNICA',
       title: 'Comunicación visual con evolución continua hacia producto e IA.',
-      description: 'Formación universitaria en diseño, complementada con desarrollo web y aprendizaje aplicado en entornos productivos.',
+      description: 'Formación universitaria en diseño, complementada con desarrollo web y una especialización activa orientada a productos y procesos con inteligencia artificial.',
       degrees: [
+        { year: '2026—Actual', title: 'Especialización en Inteligencia Artificial', institution: 'Corporación Universitaria Minuto de Dios · Inicio: agosto de 2026' },
         { year: '2019', title: 'Profesional en Comunicación Visual', institution: 'Corporación Universitaria Minuto de Dios' },
         { year: '2015', title: 'Tecnólogo en Comunicación Gráfica', institution: 'Corporación Universitaria Minuto de Dios' },
       ],
       learningLabel: 'Formación complementaria documentada',
-      learning: ['JavaScript + Angular', 'Diseño y desarrollo de sitios web', 'Desarrollo web con PHP', 'Introducción al desarrollo web', 'Diseño y comunicación multimedia'],
+      learning: ['React · 54 horas en fortalecimiento', 'Principios SOLID y Clean Code', 'JavaScript + Angular', 'Diseño y desarrollo de sitios web', 'Desarrollo web con PHP', 'Inglés A2 certificado'],
     },
     contact: {
       eyebrow: 'SIGUIENTE NODO',
       title: 'Dos caminos para iniciar una conversación.',
-      description: 'Ask Cris puede orientarte por mi experiencia y proyectos. Si ya tienes un reto concreto, puedes continuar por LinkedIn o correo.',
+      description: 'Ask Cris puede orientarte por mi experiencia y proyectos. Si ya tienes un reto concreto, puedes continuar por WhatsApp, LinkedIn o correo.',
       cta: 'Escribir por correo',
       assistantCta: 'Consultar primero a Ask Cris',
       links: [
         { label: 'LinkedIn', href: 'https://www.linkedin.com/in/crisalcediaz/', detail: 'Perfil y conversación profesional' },
+        { label: 'WhatsApp', href: 'https://wa.me/573208511297?text=Hola%20Cristian%2C%20vi%20tu%20portafolio%20y%20quiero%20conversar%20sobre%20un%20proyecto.', detail: '+57 320 851 1297 · Conversación directa' },
         { label: 'GitHub', href: 'https://github.com/CDiazHipertexto', detail: 'Código y experimentos' },
         { label: 'Behance', href: 'https://www.behance.net/crisalcediaaz', detail: 'Archivo visual' },
       ],
@@ -288,6 +293,8 @@ export const portfolioContent: Record<Locale, PortfolioContent> = {
       workTitle: 'Casos que explican decisiones, no solo pantallas.',
       workIntro: 'La evidencia disponible se está organizando por contexto, restricciones, proceso, resultado y confidencialidad.',
       projectTabs: { all: 'Todos', frontend: 'Frontend', uxui: 'UX/UI', graphic: 'Diseño gráfico' },
+      archiveCta: 'Explorar archivo visual',
+      archiveDescription: 'Revisa mockups completos, 16 implementaciones web y piezas de motion publicadas.',
       openSite: 'Ver sitio público',
       caseSoon: 'Caso completo próximamente',
       menu: 'Abrir navegación',
@@ -313,7 +320,7 @@ export const portfolioContent: Record<Locale, PortfolioContent> = {
       lead: 'I connect product design, visual systems, frontend engineering and business context to turn enterprise complexity into clear, scalable products.',
       primaryCta: 'Explore work',
       secondaryCta: 'Ask Cris',
-      availability: 'Bogotá · Open to product challenges',
+      availability: 'Bogotá · Open to new opportunities',
     },
     principles: [
       { index: '01', title: 'Systems first', description: 'I connect decisions, rules and states before drawing screens.' },
@@ -335,10 +342,10 @@ export const portfolioContent: Record<Locale, PortfolioContent> = {
       title: 'Technology and design applied to real problems.',
       description: 'This is not a logo collection. Every tool is connected to a verifiable part of my professional practice.',
       groups: [
-        { category: 'frontend', label: 'Frontend', items: ['HTML5', 'CSS3', 'Sass / SCSS', 'JavaScript', 'TypeScript', 'Angular', 'Vue.js', 'Liferay', 'PHP / Symfony', 'REST APIs', 'Git'] },
+        { category: 'frontend', label: 'Frontend', items: ['HTML5', 'CSS3', 'Sass / SCSS', 'JavaScript', 'TypeScript', 'Angular', 'Vue.js', 'React · training', 'Liferay', 'PHP / Symfony', 'REST APIs', 'Git'] },
         { category: 'uxui', label: 'UX/UI & Product', items: ['Figma', 'Adobe XD', 'Information architecture', 'User flows', 'Wireframes', 'Prototypes', 'Design Systems', 'UX Writing', 'Accessibility', 'Responsive Design'] },
         { category: 'graphic', label: 'Graphic Design', items: ['Illustrator', 'Photoshop', 'InDesign', 'After Effects', 'Premiere Pro', 'Acrobat', 'Editorial design', 'Prepress', 'ePub', 'Email marketing'] },
-        { category: 'workflow', label: 'Product & collaboration', items: ['Jira', 'Azure DevOps', 'Salesforce Lightning', 'WordPress', 'Magento', 'VTEX', 'Agile methods', 'Applied AI'] },
+        { category: 'workflow', label: 'Product & collaboration', items: ['Jira', 'Azure DevOps', 'Salesforce Lightning', 'WordPress', 'WooCommerce', 'Magento', 'VTEX', 'Technical SEO', 'Visual QA', 'Applied AI'] },
       ],
     },
     projects: [
@@ -446,36 +453,39 @@ export const portfolioContent: Record<Locale, PortfolioContent> = {
       ],
     },
     experience: {
-      eyebrow: 'EXPERIENCE · A JOURNEY SINCE 2015',
+      eyebrow: 'EXPERIENCE · CAREER 2015—2026',
       title: 'Designing, implementing and evolving digital products.',
       description: 'A career that moved from graphic production and editorial ecosystems into frontend interfaces and enterprise platforms.',
       items: [
-        { period: 'Oct 2023 — Present', role: 'Tech Consultant · Frontend Web', company: 'Grupo VASS', description: 'Accessible, optimized interfaces with HTML5, SCSS and JavaScript; Angular and Liferay development, components and agile collaboration.', tags: ['Angular', 'Liferay', 'Accessibility'] },
-        { period: 'Jun 2022 — Oct 2023', role: 'Frontend Web Developer', company: 'Tambourine · Marketing for Hotels', description: 'Hospitality web experiences built with HTML5, SCSS, PHP/Symfony and JavaScript interactions.', tags: ['HTML', 'SCSS', 'JavaScript'] },
-        { period: 'Mar 2018 — Jun 2022', role: 'Frontend Web Developer', company: 'PasaLaPágina', description: 'UX/UI design, Vue.js interfaces, responsive optimization and email marketing campaigns.', tags: ['Vue.js', 'UX/UI', 'Email'] },
-        { period: 'Sep 2015 — Feb 2018', role: 'Web, graphic and conversion designer', company: 'Hipertexto Ltda.', description: 'Electronic publications, HTML/CSS interfaces and experiences managed with VTEX, WordPress and Magento.', tags: ['ePub', 'WordPress', 'Magento'] },
-        { period: 'Jan 2015 — Jul 2015', role: 'Graphic Designer · Prepress', company: 'Legis S.A.', description: 'Graphic assets and final artwork, including color-proof review and print-production standards.', tags: ['Editorial', 'Prepress', 'Graphic Design'] },
+        { period: 'Oct 2023 — Jul 24, 2026', role: 'Tech Consultant · Frontend · UX/UI', company: 'Grupo VASS', description: 'Turned enterprise requirements into flows, wireframes, prototypes and components; supported implementation and QA with Angular, Liferay and Salesforce while applying accessibility, UX Writing and Design System consistency.', tags: ['Angular', 'Liferay', 'Salesforce', 'Figma'] },
+        { period: 'Sep 2020 — Jul 13, 2026', role: 'Freelance Frontend Developer · Web Designer', company: 'Hipertexto Ltda.', description: 'Maintained publishing and e-commerce ecosystems with WordPress, Magento, Laravel and Vue.js; designed Figma proposals and documented components, deployments, risks and incidents.', tags: ['Magento', 'Vue.js', 'WordPress', 'Figma'] },
+        { period: 'Jun 2022 — Oct 2023', role: 'Frontend Web Developer', company: 'Tambourine · Marketing for Hotels', description: 'Implemented hospitality websites and landing pages from design files and visual systems, covering responsive behavior, cross-browser compatibility, visual QA and performance with HTML5, SCSS, JavaScript and PHP/Symfony.', tags: ['HTML', 'SCSS', 'JavaScript', 'PHP'] },
+        { period: 'Mar 2018 — Jun 2022', role: 'Frontend Web Developer · UX/UI · Email', company: 'PasaLaPágina', description: 'Designed and developed a digital reading platform with Vue.js; improved navigation, components and responsive behavior, connecting Mailchimp and emBlue campaigns with publishing and product goals.', tags: ['Vue.js', 'UX/UI', 'Mailchimp', 'emBlue'] },
+        { period: 'Sep 2015 — Feb 2018', role: 'Web, graphic and digital conversion designer', company: 'Hipertexto Ltda.', description: 'Built web experiences, digital assets and ePub2/ePub3 publications for publishing and e-commerce contexts using HTML, CSS, WordPress, Magento and VTEX.', tags: ['ePub', 'WordPress', 'Magento', 'VTEX'] },
+        { period: 'Jan 2015 — Jul 2015', role: 'Graphic Designer · Final Art', company: 'Legis S.A.', description: 'Prepared editorial and print assets, final artwork, color proofs and quality controls under production specifications.', tags: ['Editorial', 'Prepress', 'Graphic Design'] },
       ],
     },
     education: {
       eyebrow: 'EDUCATION · VISUAL AND TECHNICAL FOUNDATION',
       title: 'Visual communication evolving continuously into product and AI.',
-      description: 'University education in design, complemented by web development and applied learning in production environments.',
+      description: 'University education in design, complemented by web development and an active specialization focused on AI-enabled products and processes.',
       degrees: [
+        { year: '2026—Present', title: 'Specialization in Artificial Intelligence', institution: 'Corporación Universitaria Minuto de Dios · Started August 2026' },
         { year: '2019', title: 'Bachelor-level degree in Visual Communication', institution: 'Corporación Universitaria Minuto de Dios' },
         { year: '2015', title: 'Technologist in Graphic Communication', institution: 'Corporación Universitaria Minuto de Dios' },
       ],
       learningLabel: 'Documented complementary training',
-      learning: ['JavaScript + Angular', 'Website design and development', 'Web development with PHP', 'Introduction to web development', 'Multimedia design and communication'],
+      learning: ['React · 54-hour upskilling track', 'SOLID principles and Clean Code', 'JavaScript + Angular', 'Website design and development', 'Web development with PHP', 'Certified A2 English'],
     },
     contact: {
       eyebrow: 'NEXT NODE',
       title: 'Two ways to start a conversation.',
-      description: 'Ask Cris can guide you through my experience and projects. If you already have a specific challenge, continue on LinkedIn or email.',
+      description: 'Ask Cris can guide you through my experience and projects. If you already have a specific challenge, continue on WhatsApp, LinkedIn or email.',
       cta: 'Write by email',
       assistantCta: 'Ask Cris first',
       links: [
         { label: 'LinkedIn', href: 'https://www.linkedin.com/in/crisalcediaz/', detail: 'Profile and professional conversation' },
+        { label: 'WhatsApp', href: 'https://wa.me/573208511297?text=Hi%20Cristian%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20project.', detail: '+57 320 851 1297 · Direct conversation' },
         { label: 'GitHub', href: 'https://github.com/CDiazHipertexto', detail: 'Code and experiments' },
         { label: 'Behance', href: 'https://www.behance.net/crisalcediaaz', detail: 'Visual archive' },
       ],
@@ -485,6 +495,8 @@ export const portfolioContent: Record<Locale, PortfolioContent> = {
       workTitle: 'Cases that explain decisions, not just screens.',
       workIntro: 'Available evidence is being organized by context, constraints, process, outcome and confidentiality.',
       projectTabs: { all: 'All', frontend: 'Frontend', uxui: 'UX/UI', graphic: 'Graphic design' },
+      archiveCta: 'Explore visual archive',
+      archiveDescription: 'Browse full-page mockups, 16 web implementations and published motion work.',
       openSite: 'Visit public site',
       caseSoon: 'Full case coming soon',
       menu: 'Open navigation',

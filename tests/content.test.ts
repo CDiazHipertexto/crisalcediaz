@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { portfolioContent } from '../app/data/portfolio'
+import { archiveContent } from '../app/data/archive'
 
 describe('portfolio content', () => {
   it('keeps Spanish and English navigation aligned', () => {
@@ -26,6 +27,45 @@ describe('portfolio content', () => {
         expect(project.imageWidth).toBeGreaterThan(0)
         expect(project.imageHeight).toBeGreaterThan(0)
       }
+    }
+  })
+
+  it('keeps verified career and education dates in both languages', () => {
+    expect(portfolioContent.es.experience.items[0]?.period).toBe('Oct 2023 — 24 Jul 2026')
+    expect(portfolioContent.en.experience.items[0]?.period).toBe('Oct 2023 — Jul 24, 2026')
+    expect(portfolioContent.es.education.degrees[0]?.title).toContain('Inteligencia Artificial')
+    expect(portfolioContent.en.education.degrees[0]?.title).toContain('Artificial Intelligence')
+  })
+
+  it('publishes the requested WhatsApp channel safely', () => {
+    for (const locale of Object.values(portfolioContent)) {
+      const whatsapp = locale.contact.links.find(link => link.label === 'WhatsApp')
+      expect(whatsapp?.href).toMatch(/^https:\/\/wa\.me\/573208511297\?text=/)
+    }
+  })
+
+  it('lists sixteen unique website implementations in both languages', () => {
+    for (const locale of Object.values(archiveContent)) {
+      expect(locale.web.all).toHaveLength(16)
+      expect(new Set(locale.web.all.map(item => item.url))).toHaveLength(16)
+    }
+  })
+
+  it('provides optimized evidence and accessible text for every featured website', () => {
+    for (const locale of Object.values(archiveContent)) {
+      for (const item of locale.web.featured) {
+        expect(item.image).toMatch(/\.webp$/)
+        expect(item.alt).toBeTruthy()
+        expect(item.width).toBeGreaterThan(0)
+        expect(item.height).toBeGreaterThan(0)
+      }
+    }
+  })
+
+  it('exposes the three selected videos and the public channel', () => {
+    for (const locale of Object.values(archiveContent)) {
+      expect(locale.motion.videos.map(video => video.id)).toEqual(['wpKGBAqxByw', 'yXxhGUVNyqU', 'TPnonwRnPzc'])
+      expect(locale.motion.channelUrl).toBe('https://www.youtube.com/@cristianrsalcedodiaz229')
     }
   })
 })

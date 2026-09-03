@@ -48,7 +48,7 @@ Copiar `.env.example` a `.env` solo cuando sea necesario. Nunca guardar secretos
 
 La Home se implementa en Nuxt/Vue. Las futuras demostraciones React y Angular se compilarán como artefactos aislados, sin incorporarlas al bundle principal.
 
-El contenido se organiza en tres ramas profesionales: Frontend Engineering, UX/UI–Product Design y Diseño Gráfico.
+El contenido se organiza en tres ramas profesionales: Frontend Engineering, UX/UI–Product Design y Diseño Gráfico. El archivo visual bilingüe está disponible en `/archive` y `/en/archive`.
 
 ## Contenido y privacidad
 
