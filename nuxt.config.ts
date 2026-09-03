@@ -4,6 +4,7 @@ export default defineNuxtConfig({
   modules: ['@nuxt/eslint', '@nuxtjs/sitemap'],
   css: ['~/assets/css/main.css'],
   app: {
+    pageTransition: { name: 'page', mode: 'out-in' },
     head: {
       htmlAttrs: { lang: 'es' },
       meta: [
@@ -23,7 +24,7 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       crawlLinks: true,
-      routes: ['/', '/en', '/archive', '/en/archive', '/privacy', '/accessibility', '/sitemap-html'],
+      routes: ['/', '/en', '/archive', '/en/archive', '/system-lab', '/en/system-lab', '/resume', '/en/resume', '/privacy', '/accessibility', '/sitemap-html'],
     },
   },
   typescript: {

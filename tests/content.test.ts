@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { portfolioContent } from '../app/data/portfolio'
 import { archiveContent } from '../app/data/archive'
+import { labContent } from '../app/data/lab'
 
 describe('portfolio content', () => {
   it('keeps Spanish and English navigation aligned', () => {
@@ -67,5 +68,20 @@ describe('portfolio content', () => {
       expect(locale.motion.videos.map(video => video.id)).toEqual(['wpKGBAqxByw', 'yXxhGUVNyqU', 'TPnonwRnPzc'])
       expect(locale.motion.channelUrl).toBe('https://www.youtube.com/@cristianrsalcedodiaz229')
     }
+  })
+
+  it('links the system, archive and resume from both home navigations', () => {
+    for (const locale of Object.values(portfolioContent)) {
+      expect(locale.nav.some(item => item.href === '#system')).toBe(true)
+      expect(locale.nav.some(item => item.href.includes('archive'))).toBe(true)
+      expect(locale.nav.some(item => item.href.includes('resume'))).toBe(true)
+    }
+  })
+
+  it('labels AI specialization work honestly as exploration and roadmap', () => {
+    expect(labContent.es.ai.items).toHaveLength(6)
+    expect(labContent.en.ai.items).toHaveLength(6)
+    expect(labContent.es.hero.note).toContain('no se presentan como experiencia profesional terminada')
+    expect(labContent.en.hero.note).toContain('not completed professional experience')
   })
 })

@@ -9,10 +9,12 @@ No se instalarán etiquetas hasta recibir identificadores y aprobar consentimien
 | `case_study_progress` | 25/50/75/100% | `case_id`, `percent` | Profundidad | Sin texto libre | ≥50% |
 | `view_design_system` | Vista del sistema | `language` | Interés técnico | Sin PII | Línea base |
 | `view_ai_lab` | Vista de AI Lab | `language` | Interés IA | Sin PII | Línea base |
+| `view_archive` | Vista del archivo visual | `language` | Interés en evidencia visual | Sin PII | Línea base |
+| `view_resume` | Vista del currículum web | `language` | Intención de contratación | Sin PII | Línea base |
 | `open_ai_assistant` | Apertura | `entry_point` | Adopción | Sin prompt | Línea base |
 | `ask_ai_assistant` | Pregunta enviada | `intent`, `found_source` | Calidad | No guardar texto | Respuesta con fuente |
 | `assistant_source_click` | Clic en fuente | `source_id` | Confianza | ID público | Línea base |
-| `download_resume` | Descarga de CV | `language`, `variant` | Conversión | Sin PII | Línea base |
+| `download_resume` | Impresión o guardado PDF del CV | `language`, `variant` | Conversión | Sin PII | Línea base |
 | `click_linkedin` | Clic externo | `location` | Conversión | Sin PII | Línea base |
 | `click_email` | Inicio de email | `location` | Conversión | No registrar email | Línea base |
 | `contact_start` | Primer campo | `form_id` | Fricción | Sin valores | Línea base |
@@ -20,4 +22,3 @@ No se instalarán etiquetas hasta recibir identificadores y aprobar consentimien
 | `language_change` | Cambio de idioma | `from`, `to` | Preferencia | Sin PII | Línea base |
 | `theme_change` | Cambio de tema | `theme` | Preferencia | Sin PII | Línea base |
 | `outbound_link` | Enlace externo | `domain`, `location` | Navegación | Sin query strings | Línea base |
-

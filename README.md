@@ -11,6 +11,8 @@ Primer prototipo en construcción. El contenido marcado como pendiente no debe p
 - Nuxt 4, Vue 3 y TypeScript.
 - Generación estática para cPanel.
 - CSS propio basado en tokens semánticos.
+- Motion para revelado progresivo importado únicamente en cliente.
+- Simple Icons para SVG inline seleccionados y sin solicitudes externas.
 - Tipografía del sistema, sin solicitudes a proveedores externos.
 - Vitest para pruebas de lógica y contenido.
 - ESLint y type checking en la cadena de calidad.
@@ -48,7 +50,11 @@ Copiar `.env.example` a `.env` solo cuando sea necesario. Nunca guardar secretos
 
 La Home se implementa en Nuxt/Vue. Las futuras demostraciones React y Angular se compilarán como artefactos aislados, sin incorporarlas al bundle principal.
 
-El contenido se organiza en tres ramas profesionales: Frontend Engineering, UX/UI–Product Design y Diseño Gráfico. El archivo visual bilingüe está disponible en `/archive` y `/en/archive`.
+El contenido se organiza en tres ramas profesionales: Frontend Engineering, UX/UI–Product Design y Diseño Gráfico.
+
+- Archivo visual: `/archive` y `/en/archive`.
+- CRIS/OS System + AI Lab: `/system-lab` y `/en/system-lab`.
+- Currículum web imprimible: `/resume` y `/en/resume`.
 
 ## Contenido y privacidad
 

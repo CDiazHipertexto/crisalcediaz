@@ -6,6 +6,10 @@ const links = [
   { to: '/en', label: 'Home — English' },
   { to: '/archive', label: 'Archivo visual y web — Español' },
   { to: '/en/archive', label: 'Visual and web archive — English' },
+  { to: '/system-lab', label: 'CRIS/OS System + AI Lab — Español' },
+  { to: '/en/system-lab', label: 'CRIS/OS System + AI Lab — English' },
+  { to: '/resume', label: 'Currículum — Español' },
+  { to: '/en/resume', label: 'Resume — English' },
   { to: '/privacy', label: 'Privacidad' },
   { to: '/accessibility', label: 'Accesibilidad' },
 ]

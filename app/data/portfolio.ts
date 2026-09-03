@@ -73,6 +73,8 @@ export interface PortfolioContent {
     projectTabs: Record<'all' | 'frontend' | 'uxui' | 'graphic', string>
     archiveCta: string
     archiveDescription: string
+    systemCta: string
+    resumeCta: string
     openSite: string
     caseSoon: string
     menu: string
@@ -92,10 +94,13 @@ export const portfolioContent: Record<Locale, PortfolioContent> = {
       { label: 'Stack', href: '#stack' },
       { label: 'Experiencia', href: '#experience' },
       { label: 'Proyectos', href: '#work' },
+      { label: 'Sistema', href: '#system' },
+      { label: 'Archivo', href: '/archive' },
+      { label: 'CV', href: '/resume' },
       { label: 'Contacto', href: '#contact' },
     ],
     hero: {
-      eyebrow: 'DESIGN ENGINEER · PRODUCT DESIGN · FRONTEND',
+      eyebrow: 'DESIGN ENGINEER · UX/UI · FRONTEND · GRAPHIC DESIGN',
       title: 'Diseño sistemas. Construyo experiencias. Orquesto flujos con IA.',
       lead: 'Conecto diseño de producto, sistemas visuales, frontend y contexto de negocio para convertir complejidad empresarial en productos claros y escalables.',
       primaryCta: 'Explorar trabajo',
@@ -277,7 +282,7 @@ export const portfolioContent: Record<Locale, PortfolioContent> = {
     },
     contact: {
       eyebrow: 'SIGUIENTE NODO',
-      title: 'Dos caminos para iniciar una conversación.',
+      title: 'Una conversación, varias puertas de entrada.',
       description: 'Ask Cris puede orientarte por mi experiencia y proyectos. Si ya tienes un reto concreto, puedes continuar por WhatsApp, LinkedIn o correo.',
       cta: 'Escribir por correo',
       assistantCta: 'Consultar primero a Ask Cris',
@@ -295,6 +300,8 @@ export const portfolioContent: Record<Locale, PortfolioContent> = {
       projectTabs: { all: 'Todos', frontend: 'Frontend', uxui: 'UX/UI', graphic: 'Diseño gráfico' },
       archiveCta: 'Explorar archivo visual',
       archiveDescription: 'Revisa mockups completos, 16 implementaciones web y piezas de motion publicadas.',
+      systemCta: 'Explorar sistema y laboratorio',
+      resumeCta: 'Ver currículum',
       openSite: 'Ver sitio público',
       caseSoon: 'Caso completo próximamente',
       menu: 'Abrir navegación',
@@ -312,10 +319,13 @@ export const portfolioContent: Record<Locale, PortfolioContent> = {
       { label: 'Stack', href: '#stack' },
       { label: 'Experience', href: '#experience' },
       { label: 'Work', href: '#work' },
+      { label: 'System', href: '#system' },
+      { label: 'Archive', href: '/en/archive' },
+      { label: 'Resume', href: '/en/resume' },
       { label: 'Contact', href: '#contact' },
     ],
     hero: {
-      eyebrow: 'DESIGN ENGINEER · PRODUCT DESIGN · FRONTEND',
+      eyebrow: 'DESIGN ENGINEER · UX/UI · FRONTEND · GRAPHIC DESIGN',
       title: 'I design systems. I engineer experiences. I orchestrate AI-assisted workflows.',
       lead: 'I connect product design, visual systems, frontend engineering and business context to turn enterprise complexity into clear, scalable products.',
       primaryCta: 'Explore work',
@@ -479,7 +489,7 @@ export const portfolioContent: Record<Locale, PortfolioContent> = {
     },
     contact: {
       eyebrow: 'NEXT NODE',
-      title: 'Two ways to start a conversation.',
+      title: 'One conversation, several ways to begin.',
       description: 'Ask Cris can guide you through my experience and projects. If you already have a specific challenge, continue on WhatsApp, LinkedIn or email.',
       cta: 'Write by email',
       assistantCta: 'Ask Cris first',
@@ -497,6 +507,8 @@ export const portfolioContent: Record<Locale, PortfolioContent> = {
       projectTabs: { all: 'All', frontend: 'Frontend', uxui: 'UX/UI', graphic: 'Graphic design' },
       archiveCta: 'Explore visual archive',
       archiveDescription: 'Browse full-page mockups, 16 web implementations and published motion work.',
+      systemCta: 'Explore system and lab',
+      resumeCta: 'View resume',
       openSite: 'Visit public site',
       caseSoon: 'Full case coming soon',
       menu: 'Open navigation',

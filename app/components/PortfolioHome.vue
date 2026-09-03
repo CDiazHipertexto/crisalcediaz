@@ -6,6 +6,8 @@ const props = defineProps<{ content: PortfolioContent }>()
 const assistant = ref<{ open: () => void } | null>(null)
 const activeProjectCategory = ref<'all' | 'frontend' | 'uxui' | 'graphic'>('all')
 
+useSiteMotion()
+
 const filteredProjects = computed(() => activeProjectCategory.value === 'all'
   ? props.content.projects
   : props.content.projects.filter(project => project.category === activeProjectCategory.value))
@@ -70,7 +72,7 @@ useSeoMeta({
     />
 
     <main id="main">
-      <section class="hero section-grid" aria-labelledby="hero-title">
+      <section class="hero section-grid" aria-labelledby="hero-title" data-reveal>
         <div class="hero__content">
           <p class="eyebrow"><span class="status-light" />{{ content.hero.eyebrow }}</p>
           <h1 id="hero-title">{{ content.hero.title }}</h1>
@@ -84,15 +86,15 @@ useSeoMeta({
         <NetworkVisual class="hero__visual" />
       </section>
 
-      <section class="principles" :aria-label="content.locale === 'es' ? 'Principios de trabajo' : 'Working principles'">
-        <article v-for="principle in content.principles" :key="principle.index">
+      <section class="principles" :aria-label="content.locale === 'es' ? 'Principios de trabajo' : 'Working principles'" data-reveal>
+        <article v-for="principle in content.principles" :key="principle.index" data-reveal-item>
           <span>{{ principle.index }}</span>
           <h2>{{ principle.title }}</h2>
           <p>{{ principle.description }}</p>
         </article>
       </section>
 
-      <section id="about" class="profile-section section-block" aria-labelledby="profile-title">
+      <section id="about" class="profile-section section-block" aria-labelledby="profile-title" data-reveal>
         <div class="section-heading">
           <p class="eyebrow">{{ content.branches.eyebrow }}</p>
           <h2 id="profile-title">{{ content.branches.title }}</h2>
@@ -102,19 +104,19 @@ useSeoMeta({
           </div>
         </div>
         <div class="branch-grid">
-          <article v-for="(branch, index) in content.branches.items" :key="branch.id" :data-branch="branch.id">
+          <article v-for="(branch, index) in content.branches.items" :key="branch.id" :data-branch="branch.id" data-reveal-item>
             <div class="branch-grid__index">0{{ index + 1 }} / 03</div>
             <p class="branch-grid__role">{{ branch.role }}</p>
             <h3>{{ branch.title }}</h3>
             <p>{{ branch.description }}</p>
             <ul class="tag-list" :aria-label="branch.title">
-              <li v-for="capability in branch.capabilities" :key="capability">{{ capability }}</li>
+              <li v-for="capability in branch.capabilities" :key="capability"><TechBadge :label="capability" /></li>
             </ul>
           </article>
         </div>
       </section>
 
-      <section id="stack" class="stack-section section-block section-grid" aria-labelledby="stack-title">
+      <section id="stack" class="stack-section section-block section-grid" aria-labelledby="stack-title" data-reveal>
         <div class="section-heading section-heading--compact">
           <p class="eyebrow">{{ content.stack.eyebrow }}</p>
           <h2 id="stack-title">{{ content.stack.title }}</h2>
@@ -123,10 +125,10 @@ useSeoMeta({
         <div class="stack-terminal" :aria-label="content.locale === 'es' ? 'Stack profesional' : 'Professional stack'">
           <div class="stack-terminal__bar"><span /><span /><span /><code>cris@portfolio: ~/stack</code></div>
           <div class="stack-terminal__body">
-            <section v-for="group in content.stack.groups" :key="group.category">
+            <section v-for="group in content.stack.groups" :key="group.category" data-reveal-item>
               <h3>{{ group.label }}</h3>
               <ul>
-                <li v-for="item in group.items" :key="item"><span aria-hidden="true">├─</span>{{ item }}</li>
+                <li v-for="item in group.items" :key="item"><span aria-hidden="true">├─</span><TechBadge :label="item" /></li>
               </ul>
             </section>
           </div>
@@ -134,14 +136,14 @@ useSeoMeta({
         </div>
       </section>
 
-      <section id="experience" class="experience-section section-block" aria-labelledby="experience-title">
+      <section id="experience" class="experience-section section-block" aria-labelledby="experience-title" data-reveal>
         <div class="section-heading">
           <p class="eyebrow">{{ content.experience.eyebrow }}</p>
           <h2 id="experience-title">{{ content.experience.title }}</h2>
           <p>{{ content.experience.description }}</p>
         </div>
         <ol class="timeline">
-          <li v-for="item in content.experience.items" :key="`${item.company}-${item.period}`">
+          <li v-for="item in content.experience.items" :key="`${item.company}-${item.period}`" data-reveal-item>
             <div class="timeline__marker" aria-hidden="true" />
             <p class="timeline__period">{{ item.period }}</p>
             <article>
@@ -149,14 +151,14 @@ useSeoMeta({
               <h3>{{ item.role }}</h3>
               <p>{{ item.description }}</p>
               <ul class="tag-list" :aria-label="content.locale === 'es' ? 'Habilidades' : 'Skills'">
-                <li v-for="tag in item.tags" :key="tag">{{ tag }}</li>
+                <li v-for="tag in item.tags" :key="tag"><TechBadge :label="tag" /></li>
               </ul>
             </article>
           </li>
         </ol>
       </section>
 
-      <section id="education" class="education-section section-block section-grid" aria-labelledby="education-title">
+      <section id="education" class="education-section section-block section-grid" aria-labelledby="education-title" data-reveal>
         <div class="section-heading section-heading--compact">
           <p class="eyebrow">{{ content.education.eyebrow }}</p>
           <h2 id="education-title">{{ content.education.title }}</h2>
@@ -164,21 +166,25 @@ useSeoMeta({
         </div>
         <div>
           <ol class="degree-list">
-            <li v-for="degree in content.education.degrees" :key="degree.year">
+            <li v-for="degree in content.education.degrees" :key="degree.year" data-reveal-item>
               <span>{{ degree.year }}</span>
               <div><h3>{{ degree.title }}</h3><p>{{ degree.institution }}</p></div>
             </li>
           </ol>
-          <div class="learning-list">
-            <h3>{{ content.education.learningLabel }}</h3>
-            <ul class="tag-list">
-              <li v-for="item in content.education.learning" :key="item">{{ item }}</li>
-            </ul>
+          <div class="learning-terminal" data-reveal-item>
+            <div class="learning-terminal__bar"><span /><span /><span /><code>pnpm add --global @cris/learning</code></div>
+            <div class="learning-terminal__body">
+              <h3>{{ content.education.learningLabel }}</h3>
+              <ul>
+                <li v-for="item in content.education.learning" :key="item"><span aria-hidden="true">+</span>{{ item }}</li>
+              </ul>
+            </div>
+            <p>{{ content.education.learning.length }} {{ content.locale === 'es' ? 'rutas documentadas · aprendizaje continuo' : 'documented tracks · continuous learning' }}</p>
           </div>
         </div>
       </section>
 
-      <section id="work" class="section-block" aria-labelledby="work-title">
+      <section id="work" class="section-block" aria-labelledby="work-title" data-reveal>
         <div class="section-heading">
           <p class="eyebrow">{{ content.labels.work }}</p>
           <h2 id="work-title">{{ content.labels.workTitle }}</h2>
@@ -197,7 +203,7 @@ useSeoMeta({
           </button>
         </div>
         <div class="project-list" aria-live="polite">
-          <article v-for="project in filteredProjects" :key="project.number" class="project-card">
+          <article v-for="project in filteredProjects" :key="project.number" class="project-card" data-reveal-item>
             <div class="project-card__number">{{ project.number }}</div>
             <div class="project-card__content">
               <figure
@@ -217,7 +223,7 @@ useSeoMeta({
               <h3>{{ project.title }}</h3>
               <p>{{ project.description }}</p>
               <ul class="tag-list" :aria-label="content.locale === 'es' ? 'Tecnologías' : 'Technologies'">
-                <li v-for="tag in project.tags" :key="tag">{{ tag }}</li>
+                <li v-for="tag in project.tags" :key="tag"><TechBadge :label="tag" /></li>
               </ul>
             </div>
             <div class="project-card__meta">
@@ -235,42 +241,24 @@ useSeoMeta({
         </div>
       </section>
 
-      <section id="system" class="system-section section-block section-grid" aria-labelledby="system-title">
-        <div class="section-heading section-heading--sticky">
-          <p class="eyebrow">{{ content.system.eyebrow }}</p>
-          <h2 id="system-title">{{ content.system.title }}</h2>
-          <p>{{ content.system.description }}</p>
-          <a class="text-link" href="#framework-lab">{{ content.locale === 'es' ? 'Ver arquitectura del sistema' : 'View system architecture' }} →</a>
-        </div>
-        <div class="metric-grid">
-          <article v-for="metric in content.system.metrics" :key="metric.label">
-            <strong>{{ metric.value }}</strong><span>{{ metric.label }}</span>
-          </article>
-          <div class="token-demo">
-            <div><i class="swatch swatch--accent" /><code>color.action.primary</code></div>
-            <div><i class="swatch swatch--surface" /><code>color.surface.raised</code></div>
-            <div><i class="swatch swatch--focus" /><code>color.border.focus</code></div>
-          </div>
-        </div>
-      </section>
-
-      <section id="framework-lab" class="section-block framework-section" aria-labelledby="framework-title">
+      <section id="system" class="lab-preview section-block" aria-labelledby="system-title" data-reveal>
         <div class="section-heading">
-          <p class="eyebrow">{{ content.framework.eyebrow }}</p>
-          <h2 id="framework-title">{{ content.framework.title }}</h2>
-          <p>{{ content.framework.description }}</p>
+          <p class="eyebrow">SYSTEM + AI LAB</p>
+          <h2 id="system-title">{{ content.locale === 'es' ? 'La arquitectura merece su propio espacio.' : 'The architecture deserves its own space.' }}</h2>
+          <p>{{ content.locale === 'es' ? 'CRIS/OS, la estrategia Vue–React–Angular y las exploraciones de la especialización se documentan como decisiones, no como una lista de habilidades.' : 'CRIS/OS, the Vue–React–Angular strategy and specialization explorations are documented as decisions, not as a skills list.' }}</p>
         </div>
-        <div class="framework-grid">
-          <article v-for="(item, index) in content.framework.items" :key="item.name">
-            <div class="framework-grid__top"><span>0{{ index + 1 }}</span><span>ISOLATED BUILD</span></div>
-            <h3>{{ item.name }}</h3>
-            <strong>{{ item.role }}</strong>
-            <p>{{ item.detail }}</p>
-          </article>
+        <div class="lab-preview__grid">
+          <NuxtLink :to="content.locale === 'es' ? '/system-lab#design-system' : '/en/system-lab#design-system'" data-reveal-item>
+            <span>01 · DESIGN SYSTEM</span><h3>{{ content.system.title }}</h3><p>{{ content.system.description }}</p>
+          </NuxtLink>
+          <NuxtLink :to="content.locale === 'es' ? '/system-lab#frameworks' : '/en/system-lab#frameworks'" data-reveal-item>
+            <span>02 · FRAMEWORK STRATEGY</span><h3>{{ content.framework.title }}</h3><p>{{ content.framework.description }}</p>
+          </NuxtLink>
         </div>
+        <NuxtLink class="button button--secondary lab-preview__cta" :to="content.locale === 'es' ? '/system-lab' : '/en/system-lab'">{{ content.labels.systemCta }} →</NuxtLink>
       </section>
 
-      <section id="ai-lab" class="ai-section section-block" aria-labelledby="ai-title">
+      <section id="ai-lab" class="ai-section section-block" aria-labelledby="ai-title" data-reveal>
         <div class="ai-section__signal" aria-hidden="true">
           <span v-for="n in 18" :key="n" :style="{ height: `${12 + ((n * 17) % 54)}px` }" />
         </div>
@@ -278,11 +266,16 @@ useSeoMeta({
           <p class="eyebrow">{{ content.ai.eyebrow }}</p>
           <h2 id="ai-title">{{ content.ai.title }}</h2>
           <p>{{ content.ai.description }}</p>
-          <button class="button button--primary" type="button" @click="assistant?.open()">{{ content.ai.cta }}</button>
+          <div class="hero__actions">
+            <button class="button button--primary" type="button" @click="assistant?.open()">{{ content.ai.cta }}</button>
+            <NuxtLink class="button button--secondary" :to="content.locale === 'es' ? '/system-lab#ai-path' : '/en/system-lab#ai-path'">{{ content.locale === 'es' ? 'Ver ruta de exploración' : 'View exploration path' }} →</NuxtLink>
+          </div>
         </div>
       </section>
 
-      <section id="contact" class="contact-section" aria-labelledby="contact-title">
+      <ToolMarquee :locale="content.locale" />
+
+      <section id="contact" class="contact-section" aria-labelledby="contact-title" data-reveal>
         <div class="contact-section__content">
           <p class="eyebrow">{{ content.contact.eyebrow }}</p>
           <h2 id="contact-title">{{ content.contact.title }}</h2>
@@ -290,11 +283,12 @@ useSeoMeta({
           <div class="contact-section__actions">
             <button class="button button--primary" type="button" @click="assistant?.open()">{{ content.contact.assistantCta }}</button>
             <a class="button button--secondary" href="mailto:cristianduografico@gmail.com">{{ content.contact.cta }}</a>
+            <NuxtLink class="button button--secondary" :to="content.locale === 'es' ? '/resume' : '/en/resume'">{{ content.labels.resumeCta }}</NuxtLink>
           </div>
         </div>
         <nav class="contact-links" :aria-label="content.locale === 'es' ? 'Perfiles profesionales' : 'Professional profiles'">
           <a v-for="link in content.contact.links" :key="link.label" :href="link.href" target="_blank" rel="noopener noreferrer">
-            <span><strong>{{ link.label }}</strong><small>{{ link.detail }}</small></span><span aria-hidden="true">↗</span>
+            <TechIcon :label="link.label" /><span><strong>{{ link.label }}</strong><small>{{ link.detail }}</small></span><span aria-hidden="true">↗</span>
           </a>
         </nav>
       </section>

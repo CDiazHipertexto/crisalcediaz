@@ -2,6 +2,7 @@
 import type { ArchiveContent } from '~/data/archive'
 
 const props = defineProps<{ content: ArchiveContent }>()
+useSiteMotion()
 
 const canonical = computed(() => props.content.locale === 'es'
   ? 'https://crisalcediaz.co/archive'
@@ -11,6 +12,8 @@ const nav = computed(() => [
   { label: props.content.locale === 'es' ? 'Web' : 'Web', href: '#web' },
   { label: props.content.locale === 'es' ? 'Inventario' : 'Inventory', href: '#inventory' },
   { label: 'Motion', href: '#motion' },
+  { label: props.content.locale === 'es' ? 'Sistema' : 'System', href: props.content.locale === 'es' ? '/system-lab' : '/en/system-lab' },
+  { label: 'CV', href: props.content.locale === 'es' ? '/resume' : '/en/resume' },
   { label: props.content.locale === 'es' ? 'Inicio' : 'Home', href: props.content.locale === 'es' ? '/' : '/en' },
 ])
 
@@ -47,7 +50,7 @@ useSeoMeta({
     />
 
     <main id="main">
-      <section class="archive-hero section-grid">
+      <section class="archive-hero section-grid" data-reveal>
         <div>
           <p class="eyebrow">{{ content.hero.eyebrow }}</p>
           <h1>{{ content.hero.title }}</h1>
@@ -59,7 +62,7 @@ useSeoMeta({
         </div>
       </section>
 
-      <section id="web" class="section-block archive-web" aria-labelledby="archive-web-title">
+      <section id="web" class="section-block archive-web" aria-labelledby="archive-web-title" data-reveal>
         <div class="section-heading">
           <div>
             <p class="eyebrow">{{ content.web.eyebrow }}</p>
@@ -68,7 +71,7 @@ useSeoMeta({
           <p>{{ content.web.description }}</p>
         </div>
         <div class="browser-gallery">
-          <article v-for="item in content.web.featured" :key="item.url" class="browser-card">
+          <article v-for="item in content.web.featured" :key="item.url" class="browser-card" data-reveal-item>
             <div class="browser-card__chrome" aria-hidden="true"><i /><i /><i /><span>{{ hostname(item.url) }}</span></div>
             <div class="browser-card__viewport" tabindex="0" :aria-label="`${content.web.previewLabel}: ${item.title}`">
               <img :src="item.image" :alt="item.alt" :width="item.width" :height="item.height" loading="lazy" decoding="async">
@@ -81,21 +84,21 @@ useSeoMeta({
         </div>
       </section>
 
-      <section id="inventory" class="section-block inventory-section" aria-labelledby="inventory-title">
+      <section id="inventory" class="section-block inventory-section" aria-labelledby="inventory-title" data-reveal>
         <div>
           <p class="eyebrow">WEB INDEX · 16</p>
           <h2 id="inventory-title">{{ content.web.allTitle }}</h2>
           <p>{{ content.web.allDescription }}</p>
         </div>
         <ol class="site-index">
-          <li v-for="(item, index) in content.web.all" :key="item.url">
+          <li v-for="(item, index) in content.web.all" :key="item.url" data-reveal-item>
             <span>{{ String(index + 1).padStart(2, '0') }}</span>
             <a :href="item.url" target="_blank" rel="noopener noreferrer">{{ item.title }} <span aria-hidden="true">↗</span></a>
           </li>
         </ol>
       </section>
 
-      <section id="motion" class="section-block motion-section" aria-labelledby="motion-title">
+      <section id="motion" class="section-block motion-section" aria-labelledby="motion-title" data-reveal>
         <div class="section-heading">
           <div>
             <p class="eyebrow">{{ content.motion.eyebrow }}</p>
@@ -107,7 +110,7 @@ useSeoMeta({
           </div>
         </div>
         <div class="video-grid">
-          <article v-for="video in content.motion.videos" :key="video.id">
+          <article v-for="video in content.motion.videos" :key="video.id" data-reveal-item>
             <VideoFacade
               :video-id="video.id"
               :title="video.title"
