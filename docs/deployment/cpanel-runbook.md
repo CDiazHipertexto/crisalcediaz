@@ -8,16 +8,14 @@
 - **Share document root** quedó desactivado; el dominio principal conserva su propia raíz y no fue modificado.
 - La zona de `crisalcediaz.co` existe en cPanel con A para `@` hacia el origen del hosting y CNAME de `www` hacia el dominio raíz. La IP se mantiene fuera del repositorio público.
 - Los cuatro nameservers configurados son `ns1` a `ns4.colombiahosting.com`.
-- La consulta pública aún responde `SERVFAIL` y la consulta directa a `ns1` responde `REFUSED`; se debe validar la sincronización de la zona con el proveedor antes de emitir SSL.
-- El remoto Git quedó publicado en `https://github.com/CDiazHipertexto/crisalcediaz` y la rama remota inicial es `feature/portfolio-prototype`.
+- La zona ya responde de forma autoritativa en los cuatro nameservers y los resolvers públicos consultados devuelven el registro raíz correctamente.
+- El remoto Git quedó publicado en `https://github.com/CDiazHipertexto/crisalcediaz`; `main` es la rama predeterminada y `feature/portfolio-prototype` conserva el historial de implementación.
 
 ## Requisitos por confirmar
 
-- Sincronización autoritativa de la nueva zona DNS.
-- SSL automático para `crisalcediaz.co` y `www.crisalcediaz.co`.
-- El ZIP validado fue cargado en la raíz exclusiva; falta extraerlo y retirar el ZIP después de comprobar el sitio.
-- Redirect de `www` definido.
-- Compresión y headers configurables.
+- Emisión automática de SSL para `crisalcediaz.co` y `www.crisalcediaz.co`; cPanel los muestra en cola de renovación mediante AutoSSL.
+- Mover el ZIP fuera de la raíz pública después de comprobar HTTPS, conservándolo como artefacto de rollback.
+- Validación final del redirect de `www`, compresión y headers sobre HTTPS una vez emitido el certificado.
 - Verificación final de MX, SPF, DKIM y DMARC antes de habilitar correo en el nuevo dominio.
 
 ## Desbloqueo del dominio
@@ -60,7 +58,10 @@ La CSP permite estilos y scripts inline porque el HTML estático generado por Nu
 - Artefacto: `cris-os-portfolio-2026-09-03.zip` (2,2 MB).
 - Destino confirmado: `public_html/crisalcediaz.co`; el prefijo privado de la cuenta no se documenta en el repositorio.
 - Se preservaron `.well-known`, `cgi-bin`, `.user.ini`, `php.ini` y la configuración inicial creada por cPanel.
-- El ZIP terminó de cargar; la extracción y la validación HTTP/HTTPS siguen pendientes.
+- El ZIP se extrajo correctamente y se verificó la presencia de `_nuxt`, `system-lab`, `index.html`, `robots.txt`, `sitemap.xml` y `.htaccess`.
+- La configuración `.htaccess` original de cPanel se preservó como respaldo fechado antes de extraer el artefacto.
+- La validación directa contra el origen confirmó el redirect HTTP a HTTPS y la entrega de los headers de seguridad; la validación HTTPS pública espera la emisión de AutoSSL.
+- La configuración permite `/.well-known/acme-challenge/` por HTTP para no bloquear la validación y renovación de AutoSSL; el resto del tráfico mantiene redirección canónica a HTTPS.
 
 No activar **Share document root** con otro dominio.
 
