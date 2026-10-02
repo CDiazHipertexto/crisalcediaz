@@ -52,7 +52,7 @@ La Home se implementa en Nuxt/Vue. Las futuras demostraciones React y Angular se
 
 El contenido se organiza en tres ramas profesionales: Frontend Engineering, UX/UI–Product Design y Diseño Gráfico.
 
-- Archivo visual: `/archive` y `/en/archive`.
+- Portafolio visual y web: `/archive` y `/en/archive`.
 - CRIS/OS System + AI Lab: `/system-lab` y `/en/system-lab`.
 - Currículum web imprimible: `/resume` y `/en/resume`.
 

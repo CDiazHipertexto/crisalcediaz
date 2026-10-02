@@ -4,7 +4,7 @@ export interface PortfolioContent {
   locale: Locale
   alternatePath: string
   languageLabel: string
-  nav: Array<{ label: string; href: string }>
+  nav: Array<{ label: string; href: string; emphasis?: 'resource' | 'primary' }>
   hero: {
     eyebrow: string
     title: string
@@ -25,6 +25,23 @@ export interface PortfolioContent {
     title: string
     description: string
     groups: Array<{ category: string; label: string; items: string[] }>
+  }
+  competencies: {
+    eyebrow: string
+    title: string
+    description: string
+    items: Array<{
+      index: string
+      title: string
+      summary: string
+      evidence: string[]
+      level: string
+    }>
+    learningTitle: string
+    learningDescription: string
+    learningCta: string
+    archiveCta: string
+    resumeCta: string
   }
   projects: Array<{
     number: string
@@ -91,12 +108,12 @@ export const portfolioContent: Record<Locale, PortfolioContent> = {
     languageLabel: 'EN',
     nav: [
       { label: 'Perfil', href: '#about' },
-      { label: 'Stack', href: '#stack' },
+      { label: 'Competencias', href: '#competencies' },
       { label: 'Experiencia', href: '#experience' },
       { label: 'Proyectos', href: '#work' },
       { label: 'Sistema', href: '#system' },
-      { label: 'Archivo', href: '/archive' },
-      { label: 'CV', href: '/resume' },
+      { label: 'Portafolio visual', href: '/archive', emphasis: 'resource' },
+      { label: 'CV profesional', href: '/resume', emphasis: 'primary' },
       { label: 'Contacto', href: '#contact' },
     ],
     hero: {
@@ -150,6 +167,46 @@ export const portfolioContent: Record<Locale, PortfolioContent> = {
         { category: 'graphic', label: 'Diseño gráfico', items: ['Illustrator', 'Photoshop', 'InDesign', 'After Effects', 'Premiere Pro', 'Acrobat', 'Diseño editorial', 'Arte final', 'ePub', 'Email marketing'] },
         { category: 'workflow', label: 'Producto y colaboración', items: ['Jira', 'Azure DevOps', 'Salesforce Lightning', 'WordPress', 'WooCommerce', 'Magento', 'VTEX', 'SEO técnico', 'QA visual', 'IA aplicada'] },
       ],
+    },
+    competencies: {
+      eyebrow: 'COMPETENCIAS · ALCANCE VERIFICADO',
+      title: 'Conocimientos conectados con evidencia, no solo palabras clave.',
+      description: 'Esta lectura reúne los requisitos habituales de diseño web con la experiencia y la formación que ya están documentadas en el portafolio.',
+      items: [
+        {
+          index: '01',
+          title: 'UX/UI y prototipado',
+          summary: 'Diseño interfaces web responsivas y patrones adaptables a móvil, desde la estructura hasta el detalle visual y la validación con equipos.',
+          evidence: ['Arquitectura de información y user flows', 'Wireframes y prototipos de baja y alta fidelidad', 'Figma, Auto Layout, componentes y variantes', 'Adobe XD y UX Writing'],
+          level: 'Experiencia aplicada',
+        },
+        {
+          index: '02',
+          title: 'Diseño responsive y frontend',
+          summary: 'Convierto decisiones de diseño en interfaces mantenibles, semánticas y preparadas para distintos tamaños de pantalla.',
+          evidence: ['Mobile-first y responsive design', 'HTML5, CSS3, SCSS y JavaScript', 'Angular, Vue.js y React en formación', 'QA visual, rendimiento y compatibilidad cross-browser'],
+          level: 'Experiencia aplicada',
+        },
+        {
+          index: '03',
+          title: 'Diseño visual y motion',
+          summary: 'Aplico jerarquía, tipografía, color, espaciado y movimiento como recursos funcionales dentro de sistemas visuales coherentes.',
+          evidence: ['Illustrator, Photoshop e InDesign', 'After Effects y Premiere Pro', 'Diseño editorial, arte final y comunicación visual', 'Microinteracciones con reduced motion en este portafolio'],
+          level: 'Experiencia aplicada',
+        },
+        {
+          index: '04',
+          title: 'Accesibilidad y colaboración',
+          summary: 'Integro accesibilidad desde diseño y código, y documento decisiones para trabajar con producto, desarrollo y QA.',
+          evidence: ['Objetivo WCAG 2.2 AA', 'Teclado, foco, contraste y HTML semántico', 'Jira y Azure DevOps en flujos de equipo', 'Design Systems, tokens y handoff'],
+          level: 'Práctica continua',
+        },
+      ],
+      learningTitle: 'Especialización en Inteligencia Artificial · En curso',
+      learningDescription: 'Iniciada en agosto de 2026. El trabajo de IA se presenta como formación y exploración aplicada —agentes, RAG, automatización y evaluación responsable—, no como experiencia profesional ya finalizada.',
+      learningCta: 'Explorar ruta de IA',
+      archiveCta: 'Ver portafolio visual',
+      resumeCta: 'Ver CV profesional',
     },
     projects: [
       {
@@ -298,10 +355,10 @@ export const portfolioContent: Record<Locale, PortfolioContent> = {
       workTitle: 'Casos que explican decisiones, no solo pantallas.',
       workIntro: 'La evidencia disponible se está organizando por contexto, restricciones, proceso, resultado y confidencialidad.',
       projectTabs: { all: 'Todos', frontend: 'Frontend', uxui: 'UX/UI', graphic: 'Diseño gráfico' },
-      archiveCta: 'Explorar archivo visual',
+      archiveCta: 'Explorar portafolio visual',
       archiveDescription: 'Revisa mockups completos, 16 implementaciones web y piezas de motion publicadas.',
       systemCta: 'Explorar sistema y laboratorio',
-      resumeCta: 'Ver currículum',
+      resumeCta: 'Ver CV profesional',
       openSite: 'Ver sitio público',
       caseSoon: 'Caso completo próximamente',
       menu: 'Abrir navegación',
@@ -316,12 +373,12 @@ export const portfolioContent: Record<Locale, PortfolioContent> = {
     languageLabel: 'ES',
     nav: [
       { label: 'About', href: '#about' },
-      { label: 'Stack', href: '#stack' },
+      { label: 'Capabilities', href: '#competencies' },
       { label: 'Experience', href: '#experience' },
       { label: 'Work', href: '#work' },
       { label: 'System', href: '#system' },
-      { label: 'Archive', href: '/en/archive' },
-      { label: 'Resume', href: '/en/resume' },
+      { label: 'Visual portfolio', href: '/en/archive', emphasis: 'resource' },
+      { label: 'Professional résumé', href: '/en/resume', emphasis: 'primary' },
       { label: 'Contact', href: '#contact' },
     ],
     hero: {
@@ -357,6 +414,46 @@ export const portfolioContent: Record<Locale, PortfolioContent> = {
         { category: 'graphic', label: 'Graphic Design', items: ['Illustrator', 'Photoshop', 'InDesign', 'After Effects', 'Premiere Pro', 'Acrobat', 'Editorial design', 'Prepress', 'ePub', 'Email marketing'] },
         { category: 'workflow', label: 'Product & collaboration', items: ['Jira', 'Azure DevOps', 'Salesforce Lightning', 'WordPress', 'WooCommerce', 'Magento', 'VTEX', 'Technical SEO', 'Visual QA', 'Applied AI'] },
       ],
+    },
+    competencies: {
+      eyebrow: 'CAPABILITIES · VERIFIED SCOPE',
+      title: 'Knowledge connected to evidence, not just keywords.',
+      description: 'This view maps common web-design requirements to the experience and education already documented across the portfolio.',
+      items: [
+        {
+          index: '01',
+          title: 'UX/UI and prototyping',
+          summary: 'I design responsive web interfaces and mobile-adaptive patterns, from structure to visual detail and team validation.',
+          evidence: ['Information architecture and user flows', 'Low- and high-fidelity wireframes and prototypes', 'Figma, Auto Layout, components and variants', 'Adobe XD and UX Writing'],
+          level: 'Applied experience',
+        },
+        {
+          index: '02',
+          title: 'Responsive design and frontend',
+          summary: 'I turn design decisions into maintainable, semantic interfaces built for multiple viewport sizes.',
+          evidence: ['Mobile-first and responsive design', 'HTML5, CSS3, SCSS and JavaScript', 'Angular, Vue.js and React in training', 'Visual QA, performance and cross-browser compatibility'],
+          level: 'Applied experience',
+        },
+        {
+          index: '03',
+          title: 'Visual design and motion',
+          summary: 'I use hierarchy, typography, color, spacing and motion as functional elements within coherent visual systems.',
+          evidence: ['Illustrator, Photoshop and InDesign', 'After Effects and Premiere Pro', 'Editorial design, prepress and visual communication', 'Reduced-motion-aware microinteractions in this portfolio'],
+          level: 'Applied experience',
+        },
+        {
+          index: '04',
+          title: 'Accessibility and collaboration',
+          summary: 'I integrate accessibility into design and code, documenting decisions for product, development and QA teams.',
+          evidence: ['WCAG 2.2 AA target', 'Keyboard, focus, contrast and semantic HTML', 'Jira and Azure DevOps team workflows', 'Design Systems, tokens and handoff'],
+          level: 'Continuous practice',
+        },
+      ],
+      learningTitle: 'Artificial Intelligence Specialization · In progress',
+      learningDescription: 'Started in August 2026. AI work is presented as education and applied exploration—agents, RAG, automation and responsible evaluation—not as completed professional experience.',
+      learningCta: 'Explore AI learning path',
+      archiveCta: 'View visual portfolio',
+      resumeCta: 'View professional résumé',
     },
     projects: [
       {
@@ -505,10 +602,10 @@ export const portfolioContent: Record<Locale, PortfolioContent> = {
       workTitle: 'Cases that explain decisions, not just screens.',
       workIntro: 'Available evidence is being organized by context, constraints, process, outcome and confidentiality.',
       projectTabs: { all: 'All', frontend: 'Frontend', uxui: 'UX/UI', graphic: 'Graphic design' },
-      archiveCta: 'Explore visual archive',
+      archiveCta: 'Explore visual portfolio',
       archiveDescription: 'Browse full-page mockups, 16 web implementations and published motion work.',
       systemCta: 'Explore system and lab',
-      resumeCta: 'View resume',
+      resumeCta: 'View professional résumé',
       openSite: 'Visit public site',
       caseSoon: 'Full case coming soon',
       menu: 'Open navigation',

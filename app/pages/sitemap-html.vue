@@ -4,12 +4,12 @@ useSeoMeta({ title: 'Mapa del sitio | Cristian Salcedo' })
 const links = [
   { to: '/', label: 'Inicio — Español' },
   { to: '/en', label: 'Home — English' },
-  { to: '/archive', label: 'Archivo visual y web — Español' },
-  { to: '/en/archive', label: 'Visual and web archive — English' },
+  { to: '/archive', label: 'Portafolio visual y web — Español' },
+  { to: '/en/archive', label: 'Visual and web portfolio — English' },
   { to: '/system-lab', label: 'CRIS/OS System + AI Lab — Español' },
   { to: '/en/system-lab', label: 'CRIS/OS System + AI Lab — English' },
-  { to: '/resume', label: 'Currículum — Español' },
-  { to: '/en/resume', label: 'Resume — English' },
+  { to: '/resume', label: 'CV profesional — Español' },
+  { to: '/en/resume', label: 'Professional résumé — English' },
   { to: '/privacy', label: 'Privacidad' },
   { to: '/accessibility', label: 'Accesibilidad' },
 ]

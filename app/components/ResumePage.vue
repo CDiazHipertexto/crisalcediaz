@@ -13,8 +13,8 @@ const nav = computed(() => [
   { label: props.content.locale === 'es' ? 'Perfil' : 'Profile', href: '#resume-profile' },
   { label: props.content.locale === 'es' ? 'Experiencia' : 'Experience', href: '#resume-experience' },
   { label: props.content.locale === 'es' ? 'Educación' : 'Education', href: '#resume-education' },
-  { label: 'Stack', href: '#resume-stack' },
-  { label: props.content.locale === 'es' ? 'Archivo' : 'Archive', href: archive.value },
+  { label: props.content.locale === 'es' ? 'Competencias' : 'Capabilities', href: '#resume-stack' },
+  { label: props.content.locale === 'es' ? 'Portafolio visual' : 'Visual portfolio', href: archive.value, emphasis: 'resource' as const },
 ])
 
 const printResume = () => window.print()
@@ -72,7 +72,7 @@ useSeoMeta({
           <ol class="degree-list"><li v-for="degree in content.education.degrees" :key="degree.year" data-reveal-item><span>{{ degree.year }}</span><div><h3>{{ degree.title }}</h3><p>{{ degree.institution }}</p></div></li></ol>
         </section>
         <section id="resume-stack" class="resume-section" data-reveal>
-          <p class="eyebrow">{{ content.stack.eyebrow }}</p><h2>Stack</h2>
+          <p class="eyebrow">{{ content.stack.eyebrow }}</p><h2>{{ content.locale === 'es' ? 'Competencias y herramientas' : 'Capabilities and tools' }}</h2>
           <div class="resume-stack-groups"><section v-for="group in content.stack.groups" :key="group.category" data-reveal-item><h3>{{ group.label }}</h3><ul class="tag-list"><li v-for="item in group.items" :key="item"><TechBadge :label="item" /></li></ul></section></div>
         </section>
       </div>

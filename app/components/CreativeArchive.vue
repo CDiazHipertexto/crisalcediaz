@@ -13,7 +13,7 @@ const nav = computed(() => [
   { label: props.content.locale === 'es' ? 'Inventario' : 'Inventory', href: '#inventory' },
   { label: 'Motion', href: '#motion' },
   { label: props.content.locale === 'es' ? 'Sistema' : 'System', href: props.content.locale === 'es' ? '/system-lab' : '/en/system-lab' },
-  { label: 'CV', href: props.content.locale === 'es' ? '/resume' : '/en/resume' },
+  { label: props.content.locale === 'es' ? 'CV profesional' : 'Professional résumé', href: props.content.locale === 'es' ? '/resume' : '/en/resume', emphasis: 'primary' as const },
   { label: props.content.locale === 'es' ? 'Inicio' : 'Home', href: props.content.locale === 'es' ? '/' : '/en' },
 ])
 

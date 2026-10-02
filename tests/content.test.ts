@@ -78,6 +78,16 @@ describe('portfolio content', () => {
     }
   })
 
+  it('presents verified capabilities and clearly labels ongoing AI education', () => {
+    for (const locale of Object.values(portfolioContent)) {
+      expect(locale.competencies.items).toHaveLength(4)
+      expect(locale.competencies.items.every(item => item.evidence.length >= 4)).toBe(true)
+      expect(locale.competencies.learningTitle.toLowerCase()).toMatch(/curso|progress/)
+      expect(locale.nav.find(item => item.href.includes('archive'))?.emphasis).toBe('resource')
+      expect(locale.nav.find(item => item.href.includes('resume'))?.emphasis).toBe('primary')
+    }
+  })
+
   it('labels AI specialization work honestly as exploration and roadmap', () => {
     expect(labContent.es.ai.items).toHaveLength(6)
     expect(labContent.en.ai.items).toHaveLength(6)

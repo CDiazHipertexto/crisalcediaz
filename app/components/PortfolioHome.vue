@@ -136,6 +136,41 @@ useSeoMeta({
         </div>
       </section>
 
+      <section id="competencies" class="competencies-section section-block" aria-labelledby="competencies-title" data-reveal>
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">{{ content.competencies.eyebrow }}</p>
+            <h2 id="competencies-title">{{ content.competencies.title }}</h2>
+          </div>
+          <p>{{ content.competencies.description }}</p>
+        </div>
+        <div class="competency-grid">
+          <article v-for="item in content.competencies.items" :key="item.index" data-reveal-item>
+            <div class="competency-card__meta">
+              <span>{{ item.index }}</span>
+              <strong>{{ item.level }}</strong>
+            </div>
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.summary }}</p>
+            <ul>
+              <li v-for="evidence in item.evidence" :key="evidence">{{ evidence }}</li>
+            </ul>
+          </article>
+        </div>
+        <aside class="learning-callout" :aria-labelledby="`learning-callout-${content.locale}`" data-reveal-item>
+          <div>
+            <p class="eyebrow">AI LEARNING PATH · 2026</p>
+            <h3 :id="`learning-callout-${content.locale}`">{{ content.competencies.learningTitle }}</h3>
+            <p>{{ content.competencies.learningDescription }}</p>
+          </div>
+          <div class="learning-callout__actions">
+            <NuxtLink class="button button--secondary" :to="content.locale === 'es' ? '/system-lab#ai-path' : '/en/system-lab#ai-path'">{{ content.competencies.learningCta }} →</NuxtLink>
+            <NuxtLink class="button button--secondary" :to="content.locale === 'es' ? '/archive' : '/en/archive'">{{ content.competencies.archiveCta }} →</NuxtLink>
+            <NuxtLink class="button button--primary" :to="content.locale === 'es' ? '/resume' : '/en/resume'">{{ content.competencies.resumeCta }} →</NuxtLink>
+          </div>
+        </aside>
+      </section>
+
       <section id="experience" class="experience-section section-block" aria-labelledby="experience-title" data-reveal>
         <div class="section-heading">
           <p class="eyebrow">{{ content.experience.eyebrow }}</p>

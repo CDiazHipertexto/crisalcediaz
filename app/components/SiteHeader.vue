@@ -4,7 +4,7 @@ const props = defineProps<{
   languageLabel: string
   alternatePath: string
   homePath: string
-  nav: Array<{ label: string; href: string }>
+  nav: Array<{ label: string; href: string; emphasis?: 'resource' | 'primary' }>
 }>()
 
 const menuOpen = ref(false)
@@ -76,7 +76,11 @@ onBeforeUnmount(() => {
         v-for="item in nav"
         :key="item.href"
         :href="item.href"
-        :class="{ 'site-nav__link--active': isActive(item.href) }"
+        :class="{
+          'site-nav__link--active': isActive(item.href),
+          'site-nav__link--resource': item.emphasis === 'resource',
+          'site-nav__link--primary': item.emphasis === 'primary',
+        }"
         :aria-current="isActive(item.href) ? 'location' : undefined"
         @click="menuOpen = false"
       >{{ item.label }}</a>
