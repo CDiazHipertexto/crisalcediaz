@@ -1,6 +1,6 @@
 # Runbook cPanel
 
-## Estado observado — 2026-09-03
+## Estado observado — actualizado 2026-10-01
 
 - Proveedor visible en las capturas: Colombia Hosting con cPanel.
 - cPanel 136.0.38 ofrece Domains, Zone Editor, File Manager y administración SSL/TLS.
@@ -11,11 +11,11 @@
 - La zona ya responde de forma autoritativa en los cuatro nameservers y los resolvers públicos consultados devuelven el registro raíz correctamente.
 - El remoto Git quedó publicado en `https://github.com/CDiazHipertexto/crisalcediaz`; `main` es la rama predeterminada y `feature/portfolio-prototype` conserva el historial de implementación.
 
-## Requisitos por confirmar
+## Seguimiento operativo
 
-- Emisión automática de SSL para `crisalcediaz.co` y `www.crisalcediaz.co`; cPanel los muestra en cola de renovación mediante AutoSSL.
-- Confirmar que el artefacto de rollback y la configuración original siguen disponibles en la carpeta privada de copias.
-- Validación final del redirect de `www`, compresión y headers sobre HTTPS una vez emitido el certificado.
+- Confirmar periódicamente que AutoSSL mantenga vigentes los certificados de `crisalcediaz.co` y `www.crisalcediaz.co`.
+- Conservar el artefacto de rollback y la configuración original en la carpeta privada de copias.
+- Volver a validar el redirect de `www`, compresión y headers después de cada cambio de servidor o `.htaccess`.
 - Verificación final de MX, SPF, DKIM y DMARC antes de habilitar correo en el nuevo dominio.
 
 ## Desbloqueo del dominio
@@ -63,6 +63,19 @@ La CSP permite estilos y scripts inline porque el HTML estático generado por Nu
 - La validación directa contra el origen confirmó el redirect HTTP a HTTPS y la entrega de los headers de seguridad; la validación HTTPS pública espera la emisión de AutoSSL.
 - La configuración permite `/.well-known/acme-challenge/` por HTTP para no bloquear la validación y renovación de AutoSSL; el resto del tráfico mantiene redirección canónica a HTTPS.
 - El ZIP de despliegue y el `.htaccess` original se movieron a la carpeta privada `copias`; no quedan artefactos de instalación descargables desde el document root.
+
+### Ejecución 2026-10-01
+
+- Commit publicado: `308076d` (`feat: clarify capabilities and portfolio navigation`) sobre `main`.
+- Verificaciones previas: lint, typecheck, 12 pruebas automatizadas y generación estática completados correctamente.
+- Artefacto: `cris-os-portfolio-2026-10-01-308076d.zip` (2,2 MB).
+- SHA-256: `f9486dd3258f57c05d0cb9f5472c4855e53cb56aae3a656a418ef7525231a07c`.
+- Respaldo previo: `backup-before-308076d-2026-10-01.zip`, almacenado fuera de `public_html` en la carpeta privada de copias.
+- Destino: `public_html/crisalcediaz.co`. La extracción reemplazó el build estático y preservó `.well-known`, `cgi-bin`, `.user.ini` y `php.ini`.
+- El artefacto usado se retiró del document root y quedó almacenado en la carpeta privada como `deployed-cris-os-portfolio-2026-10-01-308076d.zip`.
+- Validación visual: Home, CV, archivo visual, System + AI Lab, versión inglesa, mapa del sitio y página 404 cargaron desde el dominio público.
+- Validación HTTP: Home y sitemap respondieron `200`; una URL inexistente respondió `404`; `www` respondió `301` hacia `https://crisalcediaz.co/`.
+- HTTPS y AutoSSL están operativos sin advertencias del navegador. LiteSpeed entregó CSP, `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy` y `Permissions-Policy`.
 
 No activar **Share document root** con otro dominio.
 
